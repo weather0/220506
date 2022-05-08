@@ -11,9 +11,11 @@ public class MembershipInfo {
 	private String contact;
 	private String tier;
 	private Date signupdate;
+	private int star;
+	private int coupon;
 
 	public String toString() {
-		System.out.println(id + " : " + password + " : " + contact + " : " + tier + " : " + signupdate);
+		System.out.println(id + " : " + password + " : " + contact + " : " + tier + " : " + signupdate + " : " + star + " : " + coupon);
 
 		return null;
 	}

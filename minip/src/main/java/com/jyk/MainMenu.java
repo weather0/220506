@@ -5,36 +5,55 @@ import java.util.Scanner;
 import com.jyk.starbucks.service.MembershipManager;
 
 public class MainMenu {
-	private Scanner scn = new Scanner(System.in);
-	MembershipManager e = new MembershipManager();
+	static Scanner scn = new Scanner(System.in);
+	static MembershipManager e = new MembershipManager();
 
-	private void mainMenu() {
-		boolean b = true;
-		do {
+	public static void mainMenu() {
+		while (true) {
 			System.out.println("=======================");
 			System.out.println("===== 1.멤버십 가입 =====");
 			System.out.println("===== 2.로  그  인 =====");
 			System.out.println("===== 3.앱  종  료 =====");
 			System.out.println("=======================");
 			System.out.print("번호를 눌러주세요 >> ");
-			int num = scn.nextInt();
-			switch(num) {
+			int num = Integer.parseInt(scn.nextLine());
+			switch (num) {
 			case 1:
 				e.memberInsert();
 				break;
 			case 2:
 				e.memberSignIn();
+				subMenu();
 				break;
 			case 3:
-				b = false;
+				System.out.println("앱이 종료되었습니다");
 				break;
 			}
-		} while (b);
-		scn.close();
+			break;
+		}
 
 	}
 
-	public void run() {
-		mainMenu();
+	public static void subMenu() {
+		System.out.println("=======================");
+		System.out.println("===== 1.주문매장찾기 =====");
+		System.out.println("===== 2.개인정보조회 =====");
+		System.out.println("===== 3.로 그 아 웃 =====");
+		System.out.println("=======================");
+		System.out.print("번호를 눌러주세요 >> ");
+		int num = Integer.parseInt(scn.nextLine());
+		switch (num) {
+		case 1:
+			break;
+		case 2:
+			e.memberView();
+			break;
+		case 3:
+			mainMenu();
+			break;
+		}
 	}
+	
+	
+	
 }
