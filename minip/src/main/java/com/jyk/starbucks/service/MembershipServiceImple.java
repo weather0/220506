@@ -15,7 +15,37 @@ public class MembershipServiceImple implements MembershipService {
 	private ResultSet rs;
 	MembershipInfo member = new MembershipInfo();
 	
+	
+	//회원가입
+	@Override
+	public int signUp(MembershipInfo vo) {
+		int n = 0;
+		String sql = "INSERT INTO MEMBERS VALUES(?,?,?,DEFAULT,DEFAULT,DEFAULT,DEFAULT)";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getId());
+			psmt.setString(2, vo.getPassword());
+			psmt.setString(3, vo.getContact());
+			n = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return n;
+		
+	}
 
+	
+	//로그인
+	@Override
+	public int signIn(MembershipInfo vo) {
+		int n = 0;
+		String sql = "UPDATE MEMBERS SET SIGNINTHIS = ?, SIGNINWHO=?";
+		psmt = conn.prepareStatement(sql);
+		return 0;
+	}
+	
+	
+	
 	//개인정보조회
 	@Override
 	public MembershipInfo memberView(MembershipInfo vo) {
@@ -39,24 +69,8 @@ public class MembershipServiceImple implements MembershipService {
 		return member;
 	}
 
-	//회원가입
-	@Override
-	public int memberInsert(MembershipInfo vo) {
-		int n = 0;
-		String sql = "INSERT INTO MEMBERS VALUES(?,?,?,DEFAULT,DEFAULT,DEFAULT,DEFAULT)";
-		try {
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getId());
-			psmt.setString(2, vo.getPassword());
-			psmt.setString(3, vo.getContact());
-			n = psmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return n;
-		
-	}
-
+	
+	
 	//개인정보수정
 	@Override
 	public int memberUpdate(MembershipInfo vo) {
@@ -75,11 +89,15 @@ public class MembershipServiceImple implements MembershipService {
 		
 	}
 
+	
+	
+	
 	//회원탈퇴
 	@Override
 	public int memberDelete(MembershipInfo vo) {
 		return 0;
 	}
+
 	
 	
 	

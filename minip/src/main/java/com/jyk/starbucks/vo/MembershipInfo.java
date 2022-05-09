@@ -13,9 +13,12 @@ public class MembershipInfo {
 	private String tier;
 	private int star;
 	private int coupon;
+	private Date signinthis;
+	private Date signinlast;
+	private int signinwho;
 
 	public String toString() {
-		System.out.println(id + " : " + password + " : " + contact + " : " + tier + " : " + signupdate + " : " + star + " : " + coupon);
+		System.out.println(id + " : " + password + " : " + contact + " : " + tier + " : " + signupdate + " : " + star + " : " + coupon + " : " + signinthis + " : " + signinlast);
 
 		return null;
 	}

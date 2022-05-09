@@ -3,8 +3,9 @@ package com.jyk.starbucks.service;
 import com.jyk.starbucks.vo.MembershipInfo;
 
 public interface MembershipService {
+	int signUp(MembershipInfo vo);
+	int signIn(MembershipInfo vo);
 	MembershipInfo memberView(MembershipInfo vo);
-	int memberInsert(MembershipInfo vo);
 	int memberUpdate(MembershipInfo vo);
 	int memberDelete(MembershipInfo vo);
 	

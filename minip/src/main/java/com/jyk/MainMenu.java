@@ -9,8 +9,6 @@ public class MainMenu {
 	static MembershipManager e = new MembershipManager();
 
 	public static void mainMenu() {
-//		boolean b = true;
-//		do {
 		while (true) {
 			System.out.println("=======================");
 			System.out.println("===== 1.멤버십 가입 =====");
@@ -21,7 +19,7 @@ public class MainMenu {
 			int num = Integer.parseInt(scn.nextLine());
 			switch (num) {
 			case 1:
-				e.memberInsert();
+				e.signUp();
 				break;
 			case 2:
 				e.memberSignIn();
@@ -30,12 +28,10 @@ public class MainMenu {
 			case 3:
 				System.out.println("앱이 종료되었습니다");
 				System.exit(0);
-//				b = false;
 				break;
 			}
 			break;
 		}
-//		} while(b);
 
 	}
 
@@ -49,6 +45,10 @@ public class MainMenu {
 		int num = Integer.parseInt(scn.nextLine());
 		switch (num) {
 		case 1:
+//			System.out.println(e.accSession());
+//			CardService m = new CardService();
+//			m.test(); //임시테스트
+//			System.out.println(e.accSession());
 			break;
 		case 2:
 			e.memberView();
