@@ -9,8 +9,8 @@ public class MembershipInfo {
 	private String id;
 	private String password;
 	private String contact;
-	private String tier;
 	private Date signupdate;
+	private String tier;
 	private int star;
 	private int coupon;
 

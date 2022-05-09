@@ -12,15 +12,15 @@ public class MembershipManager {
 
 	public void memberView() {
 		System.out.println("\n─────[개인정보 조회 및 수정]─────");
-		System.out.print("ID >> ");
-		member.setId(scn.nextLine());
-		System.out.print("비밀번호입력 >> ");
+		System.out.print("ID: " + member.getId());
+		System.out.print("\n비밀번호입력 >> ");
 		while (true) {
 			String password = scn.nextLine();
 			if (password.equals(dao.memberView(member).getPassword())) {
 				dao.memberView(member).toString();
-				boolean b = true;
-				do {
+//				boolean b = true;
+//				do {
+				while(true) {
 					System.out.println("\n──────────────────────────────");
 					System.out.print("1.개인정보 수정   2.메인메뉴복귀   >> ");
 					int num = Integer.parseInt(scn.nextLine());
@@ -30,13 +30,14 @@ public class MembershipManager {
 						break;
 
 					case 2:
-						b = false;
+						MainMenu.subMenu();
+//						b = false;
 						break;
 					}
 
-				} while (b);
-
-				break;
+				} 
+//				while (b);
+//				break;
 			} else {
 				System.out.println("비밀번호가 불일치합니다. 다시 정확히 입력해주세요 >>");
 			}
@@ -77,12 +78,14 @@ public class MembershipManager {
 		} else {
 			System.out.println("입력 실패");
 		}
+		MainMenu.mainMenu();
 
 	}
 
 	public void memberUpdate() {
-		boolean b = true;
-		do {
+//		boolean b = true;
+//		do {
+		while(true){
 			System.out.println("\n─────[개인정보 수정]─────");
 			System.out.print("1.연락처 수정   2.비밀번호 수정   3.조회   4.메인메뉴복귀   >> ");
 			int num = Integer.parseInt(scn.nextLine());
@@ -128,10 +131,10 @@ public class MembershipManager {
 
 			case 4:
 				MainMenu.subMenu();
-				b = false;
+//				b = false;
 				break;
 			}
-		} while (b);
+		}
 
 	}
 	

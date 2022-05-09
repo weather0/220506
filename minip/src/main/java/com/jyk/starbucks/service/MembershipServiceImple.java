@@ -28,8 +28,8 @@ public class MembershipServiceImple implements MembershipService {
 				member.setId(rs.getString("id"));
 				member.setPassword(rs.getString("password"));
 				member.setContact(rs.getString("contact"));
-				member.setTier(rs.getString("tier"));
 				member.setSignupdate(rs.getDate("signupdate"));
+				member.setTier(rs.getString("tier"));
 				member.setStar(rs.getInt("star"));
 				member.setCoupon(rs.getInt("coupon"));
 			}
