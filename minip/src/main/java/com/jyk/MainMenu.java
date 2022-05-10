@@ -7,11 +7,14 @@ import com.jyk.starbucks.service.MembershipManager;
 
 public class MainMenu {
 	static Scanner scn = new Scanner(System.in);
-	static MembershipManager e = new MembershipManager();
+	static MembershipManager m = new MembershipManager();
 	static CardManager c = new CardManager();
-	static int exc;
+	static int n = 0;
 
+	
+	
 	public static void mainMenu() {
+		m.rollback();
 		while (true) {
 			System.out.println("=======================");
 			System.out.println("===== 1.멤버십 가입 =====");
@@ -20,17 +23,17 @@ public class MainMenu {
 			System.out.println("=======================");
 			System.out.print("번호를 눌러주세요 >> ");
 			try {
-				exc = Integer.parseInt(scn.nextLine());
+				n = Integer.parseInt(scn.nextLine());
 			} catch (Exception e) {
 				System.out.println("숫자만 입력해주세요");
 				continue;
 			}
-			switch (exc) {
+			switch (n) {
 			case 1:
-				e.signUp();
+				m.signUp();
 				break;
 			case 2:
-				e.SignIn();
+				m.SignIn();
 				subMenu();
 				break;
 			case 3:
@@ -59,10 +62,10 @@ public class MainMenu {
 			cardMenu();
 			break;
 		case 3:
-			e.memberView();
+			m.memberView();
 			break;
 		case 4:
-			e.signOut();
+			m.signOut();
 			mainMenu();
 			break;
 		}
@@ -71,9 +74,8 @@ public class MainMenu {
 	public static void cardMenu() {
 		System.out.println("=======================");
 		System.out.println("===== 1.카 드 구 매 =====");
-		System.out.println("===== 2.카 드 충 전 =====");
-		System.out.println("===== 3.카 드 조 회 =====");
-		System.out.println("===== 4.홈  메  뉴 =====");
+		System.out.println("===== 2.카 드 조 회 =====");
+		System.out.println("===== 3.홈  메  뉴 =====");
 		System.out.println("=======================");
 		System.out.print("번호를 눌러주세요 >> ");
 		int num = Integer.parseInt(scn.nextLine());
@@ -84,8 +86,6 @@ public class MainMenu {
 		case 2:
 			break;
 		case 3:
-			break;
-		case 4:
 			subMenu();
 			break;
 		}

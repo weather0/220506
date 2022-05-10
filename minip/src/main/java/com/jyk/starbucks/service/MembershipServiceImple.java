@@ -10,17 +10,14 @@ import java.util.GregorianCalendar;
 import com.jyk.starbucks.dao.DataSource;
 import com.jyk.starbucks.vo.MembershipInfo;
 
-
 public class MembershipServiceImple implements MembershipService {
 	private DataSource dataSource = DataSource.getInstance();
 	private Connection conn = dataSource.getConnection();
 	private PreparedStatement psmt;
 	private ResultSet rs;
 	MembershipInfo member = new MembershipInfo();
-	
-	
-	
-	//회원가입
+
+	// 회원가입
 	@Override
 	public int signUp(MembershipInfo vo) {
 		int n = 0;
@@ -40,15 +37,14 @@ public class MembershipServiceImple implements MembershipService {
 			e.printStackTrace();
 		}
 		return n;
-		
+
 	}
 
-	
-	//로그인
+	// 로그인
 	@Override
 	public int signIn(MembershipInfo vo) {
 		int n = 0;
-		String sql = "UPDATE MEMBERS SET SIGNINTHIS = ?, SIGNINWHO = 1 WHERE ID = ?"; //signwho=1(현재로그인)
+		String sql = "UPDATE MEMBERS SET SIGNINTHIS = ?, SIGNINWHO = 1 WHERE ID = ?"; // signwho=1(현재로그인)
 		try {
 			psmt = conn.prepareStatement(sql);
 			Calendar cal = new GregorianCalendar();
@@ -61,24 +57,39 @@ public class MembershipServiceImple implements MembershipService {
 		}
 		return n;
 	}
-	
-	//로그아웃
-		@Override
-		public int signOut(MembershipInfo vo) {
-			int n = 0;
-			String sql = "UPDATE MEMBERS SET SIGNINLAST = SIGNINTHIS, SIGNINWHO = NULL WHERE ID = ?";
-			try {
-				psmt = conn.prepareStatement(sql);
-				psmt.setString(1, vo.getId());
-				n = psmt.executeUpdate();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return n;
+
+	// 로그아웃
+	@Override
+	public int signOut(MembershipInfo vo) {
+		int n = 0;
+		String sql = "UPDATE MEMBERS SET SIGNINLAST = SIGNINTHIS, SIGNINWHO = NULL WHERE ID = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getId());
+			n = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return n;
+	}
+
+	// 접속세션초기화
+	@Override
+	public int rollback() {
+		int n = 0;
+		String sql = "UPDATE MEMBERS SET SIGNINWHO = NULL";
+		try {
+			psmt = conn.prepareStatement(sql);
+			n = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return n;
+	}
+
 	
 	
-	//개인정보조회
+	// 개인정보조회
 	@Override
 	public MembershipInfo memberView(MembershipInfo vo) {
 		String sql = "SELECT * FROM MEMBERS WHERE ID = ?";
@@ -103,9 +114,7 @@ public class MembershipServiceImple implements MembershipService {
 		return member;
 	}
 
-	
-	
-	//개인정보수정
+	// 개인정보수정
 	@Override
 	public int memberUpdate(MembershipInfo vo) {
 		int n = 0;
@@ -120,21 +129,13 @@ public class MembershipServiceImple implements MembershipService {
 			e.printStackTrace();
 		}
 		return n;
-		
+
 	}
 
-	
-	
-	
-	//회원탈퇴
+	// 회원탈퇴
 	@Override
 	public int memberDelete(MembershipInfo vo) {
 		return 0;
 	}
 
-	
-	
-	
-
-	
 }

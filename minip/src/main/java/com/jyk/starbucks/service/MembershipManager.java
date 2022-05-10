@@ -89,6 +89,11 @@ public class MembershipManager {
 		dao.signOut(member);
 	}
 	
+	//접속세션초기화
+	public void rollback() {
+		dao.rollback();
+	}
+	
 	
 	//개인정보조회
 	public void memberView() {
