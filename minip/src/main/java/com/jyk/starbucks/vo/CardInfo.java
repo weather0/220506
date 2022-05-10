@@ -1,6 +1,6 @@
 package com.jyk.starbucks.vo;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 import lombok.Data;
 
@@ -9,8 +9,8 @@ public class CardInfo {
 	private int cardorder;
 	private String card_no;
 	private String card_name;
-	private Date card_regdate;
-	private Date card_expdate;
+	private Timestamp card_regdate;
+	private Timestamp card_expdate;
 	private int card_in;
 	private int card_out;
 	private int card_bal;
