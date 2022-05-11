@@ -19,7 +19,7 @@ public class CardManager {
 	// 스캐너 관련 전역 변수
 	Scanner scn = new Scanner(System.in);
 	String pick = null;
-	int intpick = 0; // 클래스단에서는 꼬일 일이 적어 굳이 초기화 안해주고 int pick;만 해도 되지만, 그래도 웬만하면 선언할 때 초기화를 해주자
+	int intpick = 0; // int pick;만 해도 되지만, 그래도 웬만하면 초기화를 해주자
 
 	// 스택 관련 전역 변수
 	Stack<Integer> st = new Stack();
@@ -204,9 +204,7 @@ public class CardManager {
 	}
 
 	public void cardList() {
-		while (true) {
-
-		}
+		dao.cardList().toString();
 	}
 
 }

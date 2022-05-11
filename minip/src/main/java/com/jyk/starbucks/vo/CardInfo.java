@@ -17,7 +17,7 @@ public class CardInfo {
 	private String id;
 
 	public String toString() {
-		System.out.println(card_name + " : " + card_bal + " : " + card_no + " : " + card_regdate + " : " + card_expdate);
+		System.out.println(cardorder + ". " + card_name + " : " + card_bal + " : " + card_no + " : " + card_regdate + " : " + card_expdate);
 
 		return null;
 	}

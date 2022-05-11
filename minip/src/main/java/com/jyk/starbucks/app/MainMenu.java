@@ -1,5 +1,6 @@
 package com.jyk.starbucks.app;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import com.jyk.starbucks.service.CardManager;
@@ -11,37 +12,40 @@ public class MainMenu {
 	static CardManager c = new CardManager();
 	static int n = 0;
 
-	
-	
 	public static void mainMenu() {
 		m.rollback();
-		while (true) {
-			System.out.println("=======================");
-			System.out.println("===== 1.멤버십 가입 =====");
-			System.out.println("===== 2.로  그  인 =====");
-			System.out.println("===== 3.앱  종  료 =====");
-			System.out.println("=======================");
-			System.out.print("번호를 눌러주세요 >> ");
-			try {
-				n = Integer.parseInt(scn.nextLine());
-			} catch (Exception e) {
-				System.out.println("숫자만 입력해주세요");
+		System.out.println("=======================");
+		System.out.println("===== 1.멤버십 가입 =====");
+		System.out.println("===== 2.로  그  인 =====");
+		System.out.println("===== 3.앱  종  료 =====");
+		System.out.println("=======================");
+		System.out.print("번호를 눌러주세요 >> ");
+
+		String arr[] = { "1", "2", "3" };
+
+		while (true) { // 스캐너 입력값 유효성 검증 로직
+			String pick = scn.nextLine();
+			boolean pickcheck = Arrays.asList(arr).contains(pick);
+			if (pickcheck == false) {
+				System.out.println("올바른 키를 입력해주세요");
 				continue;
+			} else {
+				int intpick = Integer.parseInt(pick);
+
+				switch (intpick) {
+				case 1:
+					m.signUp();
+					break;
+				case 2:
+					m.SignIn();
+					subMenu();
+					break;
+				case 3:
+					System.out.println("앱이 종료되었습니다");
+					System.exit(0); // 메뉴 이리저리 옮겨다니다 보면 어느새 무한 루프에 빠져있다. 아예 앱을 꺼버리자
+					break;
+				}
 			}
-			switch (n) {
-			case 1:
-				m.signUp();
-				break;
-			case 2:
-				m.SignIn();
-				subMenu();
-				break;
-			case 3:
-				System.out.println("앱이 종료되었습니다");
-				System.exit(0); // 메뉴 이리저리 옮겨다니다 보면 어느새 무한 루프에 빠져있다. 아예 앱을 꺼버리자
-				break;
-			}
-			break;
 		}
 
 	}
@@ -54,21 +58,34 @@ public class MainMenu {
 		System.out.println("===== 4.로 그 아 웃 =====");
 		System.out.println("=======================");
 		System.out.print("번호를 눌러주세요 >> ");
-		int num = Integer.parseInt(scn.nextLine());
-		switch (num) {
-		case 1:
-			break;
-		case 2:
-			cardMenu();
-			break;
-		case 3:
-			m.memberView();
-			break;
-		case 4:
-			m.signOut();
-			mainMenu();
-			break;
+
+		String arr[] = { "1", "2", "3", "4" };
+
+		while (true) { // 스캐너 입력값 유효성 검증 로직
+			String pick = scn.nextLine();
+			boolean pickcheck = Arrays.asList(arr).contains(pick);
+			if (pickcheck == false) {
+				System.out.println("올바른 키를 입력해주세요");
+				continue;
+			} else {
+				int intpick = Integer.parseInt(pick);
+				switch (intpick) {
+				case 1:
+					break;
+				case 2:
+					cardMenu();
+					break;
+				case 3:
+					m.memberView();
+					break;
+				case 4:
+					m.signOut();
+					mainMenu();
+					break;
+				}
+			}
 		}
+
 	}
 
 	public static void cardMenu() {
@@ -78,16 +95,29 @@ public class MainMenu {
 		System.out.println("===== 3.메 인 메 뉴 =====");
 		System.out.println("=======================");
 		System.out.print("번호를 눌러주세요 >> ");
-		int num = Integer.parseInt(scn.nextLine());
-		switch (num) {
-		case 1:
-			c.cardInsert();
-			break;
-		case 2:
-			break;
-		case 3:
-			subMenu();
-			break;
+
+		String arr[] = { "1", "2", "3" };
+
+		while (true) { // 스캐너 입력값 유효성 검증 로직
+			String pick = scn.nextLine();
+			boolean pickcheck = Arrays.asList(arr).contains(pick);
+			if (pickcheck == false) {
+				System.out.println("올바른 키를 입력해주세요");
+				continue;
+			} else {
+				int intpick = Integer.parseInt(pick);
+				switch (intpick) {
+				case 1:
+					c.cardInsert();
+					break;
+				case 2:
+					c.cardList();
+					break;
+				case 3:
+					subMenu();
+					break;
+				}
+			}
 		}
 	}
 

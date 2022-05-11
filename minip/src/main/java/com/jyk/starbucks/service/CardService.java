@@ -67,7 +67,7 @@ public class CardService {
 	public int cardInsert(CardInfo vo) {
 		int n = 0;
 		String id = null;
-		String sql1 = "SELECT ID FROM MEMBERS WHERE SIGNINWHO = 1"; // 현재 로그인 세션 검증
+		String sql1 = "SELECT ID FROM MEMBERS WHERE SIGNINWHO = 1"; // 현재 로그인 세션 검증(join으로 쿼리 한줄로 하는 방법도 고려)
 		String sql2 = "INSERT INTO CARDS VALUES(?,?,?,DEFAULT,?,0,DEFAULT,?)";
 		try {
 			Calendar cal = new GregorianCalendar();
