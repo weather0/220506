@@ -75,7 +75,7 @@ public class MainMenu {
 		System.out.println("=======================");
 		System.out.println("===== 1.카 드 구 매 =====");
 		System.out.println("===== 2.카 드 조 회 =====");
-		System.out.println("===== 3.홈  메  뉴 =====");
+		System.out.println("===== 3.메 인 메 뉴 =====");
 		System.out.println("=======================");
 		System.out.print("번호를 눌러주세요 >> ");
 		int num = Integer.parseInt(scn.nextLine());
