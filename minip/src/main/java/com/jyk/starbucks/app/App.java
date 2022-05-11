@@ -1,4 +1,4 @@
-package com.jyk;
+package com.jyk.starbucks.app;
 
 import java.util.Scanner;
 

@@ -2,7 +2,7 @@ package com.jyk.starbucks.service;
 
 import java.util.Scanner;
 
-import com.jyk.MainMenu;
+import com.jyk.starbucks.app.MainMenu;
 import com.jyk.starbucks.vo.MembershipInfo;
 
 public class MembershipManager {
