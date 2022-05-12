@@ -11,9 +11,9 @@ public class SBMenuInfo {
 	private String menu_type2;
 	private int menu_avl;
 	private int cart;
-	
+
 	public String toString() {
-		System.out.println(menuorder+". "+menu_name+" : "+menu_price+" : "+menu_avl);
+		System.out.println(menuorder + ". " + menu_name + " : " + menu_price + "원 : " + menu_avl + " : " + cart);
 
 		return null;
 	}

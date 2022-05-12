@@ -48,7 +48,7 @@ public class CardManager {
 				arr[0] = "z"; // z,m 배치
 				arr[1] = "m";
 				for (int i = 2; i < display.size() + 2; i++) { // 나머지 자리 채운다
-					arr[i] = i - 1 + ""; // 형변환 String ← int // arr[2] = 1이어야 하므로
+					arr[i] = i - 1 + ""; // 형변환 String ← int+"" // arr[2] = 1이어야 하므로
 				}
 
 				while (true) { // 스캐너 입력값 유효성 검증 로직

@@ -5,11 +5,13 @@ import java.util.Scanner;
 
 import com.jyk.starbucks.service.CardManager;
 import com.jyk.starbucks.service.MembershipManager;
+import com.jyk.starbucks.service.SBMenuManager;
 
 public class MainMenu {
 	static Scanner scn = new Scanner(System.in);
 	static MembershipManager m = new MembershipManager();
 	static CardManager c = new CardManager();
+	static SBMenuManager s = new SBMenuManager();
 	static int n = 0;
 
 	public static void mainMenu() {
@@ -75,6 +77,7 @@ public class MainMenu {
 				int intpick = Integer.parseInt(pick);
 				switch (intpick) {
 				case 1:
+					s.sbmenuOrder();
 					break;
 				case 2:
 					cardMenu();
