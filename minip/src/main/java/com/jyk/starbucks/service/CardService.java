@@ -31,11 +31,8 @@ public class CardService {
 		}
 		String cn = Arrays.toString(arr).replaceAll("\\[|\\]|,|\\s", ""); // 배열→String형변환(Arrays.toString). 기본 양식에 쓰이는
 																			// 문자들을([],공백) 정규식으로 제거
-		return cn.substring(0, 4) + "-" + cn.substring(4, 8) + "-" + cn.substring(8, 12) + "-" + cn.substring(12, 16); // 4자리씩
-																														// 분할
-																														// 및
-																														// 하이픈
-																														// 추가
+		return cn.substring(0, 4) + "-" + cn.substring(4, 8) + "-" + cn.substring(8, 12) + "-" + cn.substring(12, 16); 
+		// 4자리씩 분할 및 하이픈 추가
 	}
 
 	// 카드 상품 목록
@@ -144,7 +141,5 @@ public class CardService {
 			e.printStackTrace();
 		}
 		return cardList;
-
 	}
-
 }

@@ -14,6 +14,8 @@ public class MainMenu {
 
 	public static void mainMenu() {
 		m.rollback();
+		System.out.println();
+		System.out.println();
 		System.out.println("=======================");
 		System.out.println("===== 1.멤버십 가입 =====");
 		System.out.println("===== 2.로  그  인 =====");
@@ -51,17 +53,19 @@ public class MainMenu {
 	}
 
 	public static void subMenu() {
-		System.out.println("=======================");
-		System.out.println("===== 1.주문매장찾기 =====");
-		System.out.println("===== 2.스타벅스카드 =====");
-		System.out.println("===== 3.개인정보조회 =====");
-		System.out.println("===== 4.로 그 아 웃 =====");
-		System.out.println("=======================");
-		System.out.print("번호를 눌러주세요 >> ");
-
-		String arr[] = { "1", "2", "3", "4" };
-
 		while (true) { // 스캐너 입력값 유효성 검증 로직
+			System.out.println();
+			System.out.println();
+			System.out.println("=======================");
+			System.out.println("===== 1.주문매장찾기 =====");
+			System.out.println("===== 2.스타벅스카드 =====");
+			System.out.println("===== 3.개인정보조회 =====");
+			System.out.println("===== 4.로 그 아 웃 =====");
+			System.out.println("=======================");
+			System.out.print("번호를 눌러주세요 >> ");
+
+			String arr[] = { "1", "2", "3", "4" };
+
 			String pick = scn.nextLine();
 			boolean pickcheck = Arrays.asList(arr).contains(pick);
 			if (pickcheck == false) {
@@ -89,16 +93,18 @@ public class MainMenu {
 	}
 
 	public static void cardMenu() {
-		System.out.println("=======================");
-		System.out.println("===== 1.카 드 구 매 =====");
-		System.out.println("===== 2.카 드 조 회 =====");
-		System.out.println("===== 3.메 인 메 뉴 =====");
-		System.out.println("=======================");
-		System.out.print("번호를 눌러주세요 >> ");
+		while (true) {
+			System.out.println();
+			System.out.println();
+			System.out.println("=======================");
+			System.out.println("===== 1.카 드 구 매 =====");
+			System.out.println("===== 2.카 드 조 회 =====");
+			System.out.println("===== 3.메 인 메 뉴 =====");
+			System.out.println("=======================");
+			System.out.print("번호를 눌러주세요 >> ");
 
-		String arr[] = { "1", "2", "3" };
+			String arr[] = { "1", "2", "3" };
 
-		while (true) { // 스캐너 입력값 유효성 검증 로직
 			String pick = scn.nextLine();
 			boolean pickcheck = Arrays.asList(arr).contains(pick);
 			if (pickcheck == false) {
