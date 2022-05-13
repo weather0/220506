@@ -62,7 +62,7 @@ public class CardManager {
 					pick = scn.nextLine();
 					boolean pickcheck = Arrays.asList(arr).contains(pick); // 배열 내 특정값 찾기
 					if (pickcheck == false) { // 상황1: 완전 엉뚱한 값 입력
-						System.out.println("올바른 키를 입력해주세요");
+						System.out.println("올바른 키를 입력해주세요 >> ");
 						continue; // {z, m, 1, 2, 3, ...} 중에 하나 제대로 입력할 때까지 루프
 					} else if (pick.equals("z")) { // 상황2: '뒤로'
 						MainMenu.cardMenu();
@@ -118,7 +118,7 @@ public class CardManager {
 					String pick2 = scn.nextLine();
 					boolean pickcheck = Arrays.asList(arr2).contains(pick2);
 					if (pickcheck == false) {
-						System.out.println("올바른 키를 입력해주세요");
+						System.out.println("올바른 키를 입력해주세요 >> ");
 						continue;
 					} else if (pick2.equals("z")) {
 						st.pop();
@@ -222,10 +222,11 @@ public class CardManager {
 		if (dao.cardList(loginInfo).isEmpty()) {
 			System.out.println("보유중인 카드가 없습니다");
 		} else {
-			System.out.println("┌─────────────────────────────────────────┬─────────┬──────────────────────┬──────────────┬──────────────┐");
-			System.out.println("│                  카드이름                 │   잔액   │        카드번호        │    등록날짜    │    유효기간    │");
-			System.out.println("├─────────────────────────────────────────┴─────────┴──────────────────────┴──────────────┴──────────────┤");
+			System.out.println("┌────────────────────────────────────────────┬────────┬─────────────────────┬────────────┬────────────┐");
+			System.out.println("│                 카드이름                   │  잔액  │       카드번호      │  등록날짜  │  유효기간  │");
+			System.out.println("├────────────────────────────────────────────┼────────┼─────────────────────┼────────────┼────────────┤");
 			dao.cardList(loginInfo).toString();
+			System.out.println("└────────────────────────────────────────────┴────────┴─────────────────────┴────────────┴────────────┘");
 			cardTopUp();
 		}
 		System.out.println("───────────────────────────────────");
@@ -262,7 +263,7 @@ public class CardManager {
 					pick = scn.nextLine();
 					boolean pickcheck = Arrays.asList(arr).contains(pick); // 배열 내 특정값 찾기
 					if (pickcheck == false) { // 상황1: 완전 엉뚱한 값 입력
-						System.out.println("올바른 키를 입력해주세요");
+						System.out.println("올바른 키를 입력해주세요 >> ");
 						continue; // {z, m, 1, 2, 3, ...} 중에 하나 제대로 입력할 때까지 루프
 					} else if (pick.equals("z")) { // 상황2: '뒤로'
 						MainMenu.cardMenu();
@@ -294,7 +295,7 @@ public class CardManager {
 					String pick2 = scn.nextLine();
 					boolean pickcheck = Arrays.asList(arr2).contains(pick2);
 					if (pickcheck == false) {
-						System.out.println("올바른 키를 입력해주세요");
+						System.out.println("올바른 키를 입력해주세요 >> ");
 						continue;
 					} else if (pick2.equals("z")) {
 						dao.cardList(loginInfo).toString();

@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 public class CardInfo {
-	private int cardorder; //자바고유필드
+	private int cardorder; // 고유필드
 	private String card_no;
 	private String card_name;
 	private Timestamp card_regdate;
@@ -20,8 +20,12 @@ public class CardInfo {
 	public String toString() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-
-		System.out.printf("│ " + cardorder + ". " + "%-38s│%8d│ %40s│", card_name, card_bal,
+		System.out.print("│ " + cardorder + ". " + card_name);
+		int k = 40 - card_name.replaceAll("[ㄱ-ㅎㅏ-ㅣ가-힣]", "  ").length();
+		for (int i = 0; i < k; i++) {
+			System.out.print(" ");
+		}
+		System.out.printf("│ %6d │ %s │", card_bal,
 				card_no + " │ " + sdf.format(card_regdate) + " │ " + sdf.format(card_expdate));
 		System.out.println();
 

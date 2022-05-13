@@ -63,7 +63,7 @@ public class SBMenuManager {
 			pick1 = scn.nextLine();
 			boolean pickcheck = Arrays.asList(arr).contains(pick1); // 배열 내 특정값 찾기
 			if (pickcheck == false) { // 상황1: 완전 엉뚱한 값 입력
-				System.out.println("올바른 키를 입력해주세요");
+				System.out.println("올바른 키를 입력해주세요 >> ");
 				continue; // {z, m, 1, 2, 3, ...} 중에 하나 제대로 입력할 때까지 루프
 			} else if (pick1.equals("z")) {
 				MainMenu.cardMenu(); // <매장기능 만들고 그쪽으로 대체할 것>
@@ -115,7 +115,7 @@ public class SBMenuManager {
 			pick2 = scn.nextLine();
 			boolean pickcheck = Arrays.asList(arr).contains(pick2); // 배열 내 특정값 찾기
 			if (pickcheck == false) { // 상황1: 완전 엉뚱한 값 입력
-				System.out.println("올바른 키를 입력해주세요");
+				System.out.println("올바른 키를 입력해주세요 >> ");
 				continue; // {z, m, 1, 2, 3, ...} 중에 하나 제대로 입력할 때까지 루프
 			} else if (pick2.equals("z")) { // 상황2: '뒤로'
 				sbmenuOrder1();
@@ -162,7 +162,7 @@ public class SBMenuManager {
 			pick3 = scn.nextLine();
 			boolean pickcheck = Arrays.asList(arr).contains(pick3); // 배열 내 특정값 찾기
 			if (pickcheck == false) { // 상황1: 완전 엉뚱한 값 입력
-				System.out.println("올바른 키를 입력해주세요");
+				System.out.println("올바른 키를 입력해주세요 >> ");
 				continue; // {z, m, 1, 2, 3, ...} 중에 하나 제대로 입력할 때까지 루프
 			} else if (pick3.equals("z")) { // 상황2: '뒤로'
 				sbmenuOrder2(types);
@@ -203,7 +203,7 @@ public class SBMenuManager {
 			pick4 = scn.nextLine();
 			boolean pickcheck = Arrays.asList(arr).contains(pick4); // 배열 내 특정값 찾기
 			if (pickcheck == false) { // 상황1: 완전 엉뚱한 값 입력
-				System.out.println("올바른 키를 입력해주세요");
+				System.out.println("올바른 키를 입력해주세요 >> ");
 				continue; // {z, m, 1, 2, 3, ...} 중에 하나 제대로 입력할 때까지 루프
 			} else if (pick4.equals("z")) { // 상황2: '뒤로'
 				sbmenuOrder3(types);
@@ -223,7 +223,7 @@ public class SBMenuManager {
 		System.out.println("───────────────────────");
 		System.out.println("1. "+menuDisplay.get(intpick - 1).getMenu_size1()+"(기본)");
 		System.out.println("2. "+menuDisplay.get(intpick - 1).getMenu_size2()+"(+500원)");
-		System.out.println("3. "+menuDisplay.get(intpick - 1).getMenu_size2()+"(+1000원)");
+		System.out.println("3. "+menuDisplay.get(intpick - 1).getMenu_size3()+"(+1000원)");
 		System.out.println("──────────────────────────────────────────────────────────────");
 		System.out.println("┌────────┬────────┐ ┌────────────────┐");
 		System.out.println("│ z.뒤로 │ m.메인 │ │ 사이즈 선택 >> │");
@@ -238,7 +238,7 @@ public class SBMenuManager {
 			pick5 = scn.nextLine();
 			boolean pickcheck = Arrays.asList(arr).contains(pick5); // 배열 내 특정값 찾기
 			if (pickcheck == false) { // 상황1: 완전 엉뚱한 값 입력
-				System.out.println("올바른 키를 입력해주세요");
+				System.out.println("올바른 키를 입력해주세요 >> ");
 				continue; // {z, m, 1, 2, 3, ...} 중에 하나 제대로 입력할 때까지 루프
 			} else if (pick5.equals("z")) { // 상황2: '뒤로'
 				sbmenuOrder4(pick3);
