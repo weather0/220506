@@ -16,7 +16,6 @@ public class MembershipInfo {
 	private int coupon;
 	private Timestamp signinthis;
 	private Timestamp signinlast;
-	private int signinwho;
 
 	public String toString() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd (E) HH:mm:ss");

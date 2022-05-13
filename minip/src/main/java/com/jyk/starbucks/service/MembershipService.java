@@ -6,7 +6,6 @@ public interface MembershipService {
 	int signUp(MembershipInfo vo);
 	int signIn(MembershipInfo vo);
 	int signOut(MembershipInfo vo);
-	int rollback();
 	MembershipInfo memberView(MembershipInfo vo);
 	int memberUpdate(MembershipInfo vo);
 	int memberDelete(MembershipInfo vo);

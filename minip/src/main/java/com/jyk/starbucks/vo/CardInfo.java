@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 public class CardInfo {
-	private int cardorder;
+	private int cardorder; //자바고유필드
 	private String card_no;
 	private String card_name;
 	private Timestamp card_regdate;

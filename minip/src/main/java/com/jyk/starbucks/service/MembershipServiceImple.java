@@ -44,13 +44,15 @@ public class MembershipServiceImple implements MembershipService {
 	@Override
 	public int signIn(MembershipInfo vo) {
 		int n = 0;
-		String sql = "UPDATE MEMBERS SET SIGNINTHIS = ?, SIGNINWHO = 1 WHERE ID = ?"; // signwho=1(현재로그인)
+//		String sql = "UPDATE MEMBERS SET SIGNINTHIS = ?, SIGNINWHO = ? WHERE ID = ?"; // signwho=(현재로그인)
+		String sql = "UPDATE MEMBERS SET SIGNINTHIS = ? WHERE ID = ?"; // signwho=(현재로그인)
 		try {
 			psmt = conn.prepareStatement(sql);
 			Calendar cal = new GregorianCalendar();
 			Timestamp ts = new Timestamp(cal.getTimeInMillis());
 			psmt.setTimestamp(1, ts);
 			psmt.setString(2, vo.getId());
+//			psmt.setString(3, vo.getId());
 			n = psmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,24 +64,10 @@ public class MembershipServiceImple implements MembershipService {
 	@Override
 	public int signOut(MembershipInfo vo) {
 		int n = 0;
-		String sql = "UPDATE MEMBERS SET SIGNINLAST = SIGNINTHIS, SIGNINWHO = NULL WHERE ID = ?";
+		String sql = "UPDATE MEMBERS SET SIGNINLAST = SIGNINTHIS WHERE ID = ?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, vo.getId());
-			n = psmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return n;
-	}
-
-	// 접속세션초기화
-	@Override
-	public int rollback() {
-		int n = 0;
-		String sql = "UPDATE MEMBERS SET SIGNINWHO = NULL";
-		try {
-			psmt = conn.prepareStatement(sql);
 			n = psmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

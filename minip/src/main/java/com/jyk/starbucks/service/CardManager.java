@@ -14,8 +14,15 @@ public class CardManager {
 	CardService dao = new CardService();
 	CardInfo card = new CardInfo();
 //	CardFace cf = new CardFace(); // 이거 왜 생성했었지? 
-	List<CardFace> display = dao.cardDisplay(); // 우변: cardDisplay()메서드가 return한 display =
-
+	List<CardFace> display = dao.cardDisplay(); // 우변: cardDisplay()메서드가 return한 display
+	String loginInfo;
+	
+	// 로그인세션 유지 관련
+	// 로그인성공한 id는 멤버관리자.로그인성공 → MainMenu → 카드관리자로 이동됨
+	public CardManager(String loginInfo) {
+		this.loginInfo = loginInfo;
+	}
+	
 	// 스캐너 관련 전역 변수
 	Scanner scn = new Scanner(System.in);
 	String pick = null;
@@ -145,6 +152,7 @@ public class CardManager {
 						// 카드 구매 확정에 따라 card 요소 최종 set하기
 						card.setCard_no(CardService.genCardNo()); // 랜덤카드번호 생성 및 부여
 						card.setCard_name(display.get(intpick - 1).getCard_name());
+						card.setId(loginInfo);
 						int c = dao.cardInsert(card);
 						if (c != 0) {
 							System.out.println("카드 구매가 완료되었습니다!!");
@@ -185,6 +193,7 @@ public class CardManager {
 				// 카드 구매 확정에 따라 card 요소 최종 set하기
 				card.setCard_no(CardService.genCardNo()); // 랜덤카드번호 생성 및 부여
 				card.setCard_name(display.get(intpick - 1).getCard_name());
+				card.setId(loginInfo);
 				int c = dao.cardInsert(card);
 				if (c != 0) {
 					System.out.println("카드 구매가 완료되었습니다!!");
@@ -210,13 +219,13 @@ public class CardManager {
 
 	public void cardList() {
 		System.out.println("────────────[ 나의 카드 ]────────────");
-		if (dao.cardList().isEmpty()) {
+		if (dao.cardList(loginInfo).isEmpty()) {
 			System.out.println("보유중인 카드가 없습니다");
 		} else {
 			System.out.println("┌─────────────────────────────────────────┬─────────┬──────────────────────┬──────────────┬──────────────┐");
 			System.out.println("│                  카드이름                 │   잔액   │        카드번호        │    등록날짜    │    유효기간    │");
 			System.out.println("├─────────────────────────────────────────┴─────────┴──────────────────────┴──────────────┴──────────────┤");
-			dao.cardList().toString();
+			dao.cardList(loginInfo).toString();
 			cardTopUp();
 		}
 		System.out.println("───────────────────────────────────");
@@ -230,7 +239,7 @@ public class CardManager {
 	//
 
 	public void cardTopUp() {
-		List<CardInfo> mycardList = dao.cardList();
+		List<CardInfo> mycardList = dao.cardList(loginInfo);
 		st.clear();
 		stn = 0;
 		st.push(0);
@@ -288,7 +297,7 @@ public class CardManager {
 						System.out.println("올바른 키를 입력해주세요");
 						continue;
 					} else if (pick2.equals("z")) {
-						dao.cardList().toString();
+						dao.cardList(loginInfo).toString();
 						st.pop();
 						stn = st.lastElement();
 						continue loop;
@@ -316,6 +325,7 @@ public class CardManager {
 						}
 						// 카드 충전 확정에 따라 card 요소 최종 set하기
 						card.setCard_no(mycardList.get(intpick - 1).getCard_no());
+						card.setId(loginInfo);
 						int c = dao.cardTopUp(card);
 						if (c != 0) {
 							System.out.println("카드 충전이 완료되었습니다!!");
@@ -358,6 +368,7 @@ public class CardManager {
 
 				// 카드 충전 확정에 따라 card 요소 최종 set하기
 				card.setCard_no(mycardList.get(intpick - 1).getCard_no());
+				card.setId(loginInfo);
 				int c = dao.cardTopUp(card);
 				if (c != 0) {
 					System.out.println("카드 충전이 완료되었습니다!!");

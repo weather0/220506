@@ -9,6 +9,7 @@ public class MembershipManager {
 	MembershipService dao = new MembershipServiceImple();
 	MembershipInfo member = new MembershipInfo();
 	Scanner scn = new Scanner(System.in);
+	public String my; // 이때 MainMenu와 패키지가 달라서 반드시 public을 붙여줘야 한다!
 
 	// 회원가입
 	public void signUp() {
@@ -55,12 +56,18 @@ public class MembershipManager {
 		MainMenu.mainMenu();
 
 	}
+
 //	
 //	
 //	
 //	
 //	
 //	
+	
+	
+	
+	
+	
 	// 로그인
 	public void SignIn() {
 		System.out.println("\n─────[로그인]─────");
@@ -78,6 +85,7 @@ public class MembershipManager {
 			if (i < 5) {
 				String password = scn.nextLine();
 				if (password.equals(dao.memberView(member).getPassword())) {
+					my = member.getId(); // 로그인 성공한 id를 전역변수 my에 할당!!
 					break;
 				} else {
 					System.out.println("비밀번호가 불일치합니다. 다시 정확히 입력해주세요 >>");
@@ -96,8 +104,9 @@ public class MembershipManager {
 		} else {
 			System.out.println("로그인 실패");
 		}
+//		return member.getId();
 	}
-//	
+
 //	
 //	
 //	
@@ -107,16 +116,11 @@ public class MembershipManager {
 	public void signOut() {
 		dao.signOut(member);
 	}
+
 //	
 //	
 //	
 //	
-//	
-//	
-	// 접속세션초기화
-	public void rollback() {
-		dao.rollback();
-	}
 //	
 //	
 //	
@@ -128,7 +132,7 @@ public class MembershipManager {
 		System.out.println("\n─────[개인정보 조회 및 수정]─────");
 		System.out.print("ID: " + member.getId());
 		System.out.print("\n비밀번호입력 >> ");
-		
+
 		for (int i = 0; i < 6; i++) {
 			if (i < 5) {
 				String password = scn.nextLine();
@@ -163,7 +167,6 @@ public class MembershipManager {
 //	
 //	
 //	
-
 
 	// 개인정보수정
 	public void memberUpdate() {

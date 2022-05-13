@@ -63,23 +63,24 @@ public class CardService {
 	// 카드 등록
 	public int cardInsert(CardInfo vo) {
 		int n = 0;
-		String id = null;
-		String sql1 = "SELECT ID FROM MEMBERS WHERE SIGNINWHO = 1"; // 현재 로그인 세션 검증(join으로 쿼리 한줄로 하는 방법도 고려)
+//		String id = null;
+//		String sql1 = "SELECT ID FROM MEMBERS WHERE SIGNINWHO = ?"; // 현재 로그인 세션 검증(join으로 쿼리 한줄로 하는 방법도 고려)
+//		String sql2 = "INSERT INTO CARDS VALUES(?,?,?,DEFAULT,?,0,DEFAULT,?) WHERE SIGNINWHO = ?";
 		String sql2 = "INSERT INTO CARDS VALUES(?,?,?,DEFAULT,?,0,DEFAULT,?)";
 		try {
 			Calendar cal = new GregorianCalendar();
 			Timestamp ts = new Timestamp(cal.getTimeInMillis());
-			psmt = conn.prepareStatement(sql1);
-			rs = psmt.executeQuery();
-			if (rs.next()) {
-				id = rs.getString("id"); // 현재 로그인한 세션의 ID값을 String으로 저장
-			}
+//			psmt = conn.prepareStatement(sql1);
+//			rs = psmt.executeQuery();
+//			if (rs.next()) {
+//				id = rs.getString("id"); // 현재 로그인한 세션의 ID값을 String으로 저장
+//			}
 			psmt = conn.prepareStatement(sql2);
 			psmt.setString(1, vo.getCard_no());
 			psmt.setString(2, vo.getCard_name());
 			psmt.setTimestamp(3, ts);
 			psmt.setInt(4, vo.getCard_in());
-			psmt.setString(5, id); // 현재 앱 이용자가 카드 구매시 카드소유자로 지정
+			psmt.setString(5, vo.getId()); // 현재 앱 이용자가 카드 구매시 카드소유자로 지정
 			n = psmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -90,19 +91,19 @@ public class CardService {
 	// 카드 충전
 	public int cardTopUp(CardInfo vo) {
 		int n = 0;
-		String id = null;
-		String sql1 = "SELECT ID FROM MEMBERS WHERE SIGNINWHO = 1"; // 현재 로그인 세션 검증
+//		String id = null;
+//		String sql1 = "SELECT ID FROM MEMBERS WHERE SIGNINWHO = 1"; // 현재 로그인 세션 검증
 		String sql2 = "UPDATE CARDS SET CARD_IN = CARD_IN + ? WHERE CARD_NO = ? AND ID = ?";
 		try {
-			psmt = conn.prepareStatement(sql1);
-			rs = psmt.executeQuery();
-			if (rs.next()) {
-				id = rs.getString("id");
-			}
+//			psmt = conn.prepareStatement(sql1);
+//			rs = psmt.executeQuery();
+//			if (rs.next()) {
+//				id = rs.getString("id");
+//			}
 			psmt = conn.prepareStatement(sql2);
 			psmt.setInt(1, vo.getCard_in());
 			psmt.setString(2, vo.getCard_no());
-			psmt.setString(3, id);
+			psmt.setString(3, vo.getId());
 			n = psmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -111,18 +112,18 @@ public class CardService {
 	}
 
 	// 보유 카드 목록 조회
-	public List<CardInfo> cardList() { // CARDS테이블의 VO로서 CardInfo타입으로 ArrayList에 담음
+	public List<CardInfo> cardList(String id) { // CARDS테이블의 VO로서 CardInfo타입으로 ArrayList에 담음
 		List<CardInfo> cardList = new ArrayList<CardInfo>();
 		CardInfo vo;
-		String id = null;
-		String sql1 = "SELECT ID FROM MEMBERS WHERE SIGNINWHO = 1";
+//		String id = null;
+//		String sql1 = "SELECT ID FROM MEMBERS WHERE SIGNINWHO = 1";
 		String sql2 = "SELECT CARD_NAME, CARD_BAL, CARD_NO, CARD_REGDATE, CARD_EXPDATE FROM CARDS WHERE ID = ? ORDER BY CARD_BAL DESC";
 		try {
-			psmt = conn.prepareStatement(sql1);
-			rs = psmt.executeQuery();
-			if (rs.next()) {
-				id = rs.getString("id");
-			}
+//			psmt = conn.prepareStatement(sql1);
+//			rs = psmt.executeQuery();
+//			if (rs.next()) {
+//				id = rs.getString("id");
+//			}
 			psmt = conn.prepareStatement(sql2);
 			psmt.setString(1, id);
 			rs = psmt.executeQuery();

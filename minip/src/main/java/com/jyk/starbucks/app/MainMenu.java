@@ -9,13 +9,13 @@ import com.jyk.starbucks.service.SBMenuManager;
 
 public class MainMenu {
 	static Scanner scn = new Scanner(System.in);
-	static MembershipManager m = new MembershipManager();
-	static CardManager c = new CardManager();
-	static SBMenuManager s = new SBMenuManager();
+	static MembershipManager m = new MembershipManager(); 
+	static CardManager c = null; 
+	// 멤버관리자와 카드관리자가 클래스가 나눠져 있어서 상호간 전역변수 공유가 당연히 안된다! 로그인직후에 그쪽 전역변수를 c에 세팅해줘야함 
+	static SBMenuManager s = null;
 	static int n = 0;
 
 	public static void mainMenu() {
-		m.rollback();
 		System.out.println();
 		System.out.println();
 		System.out.println("=======================");
@@ -41,7 +41,9 @@ public class MainMenu {
 					m.signUp();
 					break;
 				case 2:
-					m.SignIn();
+					m.SignIn(); // 로그인하고
+					c = new CardManager(m.my); // 카드관리자에서도 로그인의 전역변수를 사용할 수 있게 세팅
+					s = new SBMenuManager(m.my); // 주문관리자에서도 로그인의 전역변수를 사용할 수 있게 세팅
 					subMenu();
 					break;
 				case 3:
@@ -77,7 +79,7 @@ public class MainMenu {
 				int intpick = Integer.parseInt(pick);
 				switch (intpick) {
 				case 1:
-					s.sbmenuOrder();
+					s.sbmenuOrder1();
 					break;
 				case 2:
 					cardMenu();
