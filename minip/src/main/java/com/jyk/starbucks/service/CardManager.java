@@ -42,6 +42,19 @@ public class CardManager {
 			case 0:
 				// 스택0 [선택지]
 				System.out.println();
+				System.out.println("┌──────────────────────────────────────────────────┐");
+				System.out.println("│                                                  │");
+				System.out.println("│                   멤버십 가입                    │");
+				System.out.println("│ ──────────────────────────────────────────────── │");
+				System.out.println("│            비밀번호를 입력해 주세요 >>           │");
+				System.out.println("│                                                  │");
+				System.out.println("│ (영문자, 숫자, 특수문자 반드시 포함 8~20자 이내, │");
+				System.out.println("│ 특수문자는 ~ ! @ # $ % ^ & + = - 만 가능합니다)  │");
+				System.out.println("│                                                  │");
+				System.out.println("│                                       z.메인으로 │");
+				System.out.println("└──────────────────────────────────────────────────┘");
+				
+				System.out.println();
 				System.out.println("────────────[ 카드 구매 ]────────────");
 				System.out.println("    새로운 스타벅스 카드를 만나보세요!");
 				System.out.println("───────────────────────────────────");

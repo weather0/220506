@@ -4,19 +4,20 @@ import lombok.Data;
 
 @Data
 public class SBMenuInfo {
-	private int menuorder; // 고유필드
-	private String menu_name;
-	private int menu_price;
-	private String menu_type1;
-	private String menu_type2;
-	private int menu_avl;
-	private String menu_size1;
-	private String menu_size2;
-	private String menu_size3;
-	private int vol; // 고유필드
+	int menuorder; // 고유필드
+	String menu_name;
+	int menu_price;
+	String menu_type1;
+	String menu_type2;
+	int menu_avl;
+	String menu_size1;
+	String menu_size2;
+	String menu_size3;
+	int vol; // 고유필드
 
 	public String toString() {
-		System.out.println(menuorder + ". " + menu_name + " : " + menu_price + "원 : 재고=" + menu_avl + " : 기본사이즈=" + menu_size1);
+		System.out.println(
+				menuorder + ". " + menu_name + " : " + menu_price + "원 : 재고=" + menu_avl + " : 기본사이즈=" + menu_size1);
 
 		return null;
 	}

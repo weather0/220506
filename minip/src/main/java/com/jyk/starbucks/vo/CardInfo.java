@@ -7,15 +7,15 @@ import lombok.Data;
 
 @Data
 public class CardInfo {
-	private int cardorder; // 고유필드
-	private String card_no;
-	private String card_name;
-	private Timestamp card_regdate;
-	private Timestamp card_expdate;
-	private int card_in;
-	private int card_out;
-	private int card_bal;
-	private String id;
+	int cardorder; // 고유필드
+	String card_no;
+	String card_name;
+	Timestamp card_regdate;
+	Timestamp card_expdate;
+	int card_in;
+	int card_out;
+	int card_bal;
+	String id;
 
 	public String toString() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

@@ -11,9 +11,13 @@ import com.jyk.starbucks.service.SBMenuManager;
 public class MainMenu {
 	static Scanner scn = new Scanner(System.in);
 	static MembershipManager m = new MembershipManager();
+
+//	멤버관리자와 카드관리자가 클래스가 나눠져 있어서 상호간 전역변수 공유가 당연히 안된다! 
+//	로그인직후에 그쪽 전역변수를 c에 세팅해줘야함
 	static CardManager c = null;
-	// 멤버관리자와 카드관리자가 클래스가 나눠져 있어서 상호간 전역변수 공유가 당연히 안된다! 로그인직후에 그쪽 전역변수를 c에 세팅해줘야함
 	static SBMenuManager s = null;
+//	→ m.signIn에서 직접 subMenu로 진입함. 그쪽으로 코드 이동.
+
 	static int n = 0;
 
 	public static void mainMenu() {
@@ -136,35 +140,84 @@ public class MainMenu {
 		System.out.println("│         2. 로  그  인          │");
 		System.out.println("│         3. 앱  종  료          │");
 		System.out.println("│                                │");
+		System.out.println("│       번호를 눌러주세요 >>     │");
+		System.out.println("│                                │");
 		System.out.println("└────────────────────────────────┘");
-		System.out.print("번호를 눌러주세요 >> ");
 
 		while (true) {
 			String pick = scn.nextLine();
 			if (pick.equals("1")) {
 				m.signUp();
-				break;
 			} else if (pick.equals("2")) {
-				m.SignIn(); // 로그인하고
-				c = new CardManager(m.my); // 카드관리자에서도 로그인의 전역변수를 사용할 수 있게 세팅
-				s = new SBMenuManager(m.my); // 주문관리자에서도 로그인의 전역변수를 사용할 수 있게 세팅
-				subMenu();
-				break;
+				m.signIn();
 			} else if (pick.equals("3")) {
 				System.out.println("앱이 종료되었습니다");
 				System.exit(0); // 메뉴 이리저리 옮겨다니다 보면 어느새 무한 루프에 빠져있다. 아예 앱을 꺼버리자
-				break;
 			} else {
 				System.out.println("올바른 키를 입력해주세요 >> ");
 			}
 
 		}
+	}
 //		
 //		
-		// 스캐너 입력값 유효성 검증 로직(선택지 보기가 많거나, 입력값을 함수의 매개변수로 활용시 유용)
-//		String arr[] = { "1", "2", "3" };
 //
-//		while (true) { 
+//
+//
+//	
+//	
+//	
+//	
+
+	public static void subMenu() {
+		System.out.println("────────────────────────────────────────────────────────────────────────");
+		System.out.println("                                                                     ");
+		System.out.println("⠀⠀⢀⣤⣶⣾⡿⠻⢿⣷⣦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀            ");
+		System.out.println("⠀⣰⣿⣿⡿⠝⠫⠦⠛⠹⣿⣿⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀         ⠀ ");
+		System.out.println("⣰⡇⠛⢛⣷⣾⣏⢉⣽⢶⣿⡛⠏⢿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀        ⠀ ");
+		System.out.println("⡯⠴⣲⣿⡟⡾⡉⣈⢹⡸⣿⣷⡖⠮⣇⠀⠀⠀⣴⡶⠶⠆⠶⣶⣶⠶⠀⣶⣶⣆⠀⢰⣶⢶⣶⡀⢰⣶⢶⣶⠀⣶⡆⢰⣶⠀⣰⣶⠶⡆⢰⣶⣰⣶⠂⣴⡶⠶⡆⠶ ");
+		System.out.println("⣒⣭⣿⡿⣼⣗⡟⠒⢇⢗⣿⣿⣿⣝⡂⠀⠀⠀⣙⣿⣿⡆⠀⣿⣿⠀⣸⣿⣼⣿⡄⢸⣿⣾⣟⠁⢸⣿⢻⣿⡀⣿⣇⣸⣿⠀⣿⣇⣀⡀⢸⣿⣿⣇⠀⣙⣿⣿⡆⠀ ");
+		System.out.println("⠹⣺⠿⢻⣸⢺⠀⠀⢨⢯⢿⠘⢿⡳⠁⠀⠀⠀⠙⠛⠛⠁⠀⠛⠋⠀⠛⠃⠀⠛⠃⠘⠛⠈⠛⠂⠘⠛⠛⠋⠀⠈⠛⠛⠋⠀⠈⠛⠛⠃⠘⠛⠈⠛⠃⠙⠛⠛⠁⠀  ");
+		System.out.println("⠀⠱⣷⣾⡷⡧⡷⠀⡏⣏⡿⡷⡾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀          ");
+		System.out.println("⠀⠀⠈⠙⠹⢱⠃⠀⢹⡼⠞⠉⠤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀            ⠀ ");
+		System.out.println();
+		System.out.println("────────────────────────────────────────────────────────────────────────");
+//		System.out.println("");
+//		System.out.println("고객님");
+//		System.out.println("환경을 ");
+//		System.out.println("");
+		System.out.println();
+		System.out.println("┌──────────────────────────────────┐");
+		System.out.println("│                                  │");
+		System.out.println("│         1. 주문매장 찾기         │");
+		System.out.println("│         2. 스타벅스 카드         │");
+		System.out.println("│         3. 개인정보 조회         │");
+		System.out.println("│         4. 로  그  아 웃         │");
+		System.out.println("│                                  │");
+		System.out.println("│       번호를 눌러주세요 >>       │");
+		System.out.println("│                                  │");
+		System.out.println("└──────────────────────────────────┘");
+		c = new CardManager(m.my); // 카드관리자에서도 로그인의 전역변수를 사용할 수 있게 세팅
+		s = new SBMenuManager(m.my); // 주문관리자에서도 로그인의 전역변수를 사용할 수 있게 세팅
+		while (true) {
+			String pick = scn.nextLine();
+			if (pick.equals("1")) {
+				s.sbmenuOrder1();
+			} else if (pick.equals("2")) {
+				cardMenu();
+			} else if (pick.equals("3")) {
+				m.memberView();
+			} else if (pick.equals("4")) {
+				m.signOut();
+				mainMenu();
+			} else {
+				System.out.println("올바른 키를 입력해주세요 >> ");
+			}
+
+		}
+
+//		while (true) { // 스캐너 입력값 유효성 검증 로직
+//			String arr[] = { "1", "2", "3", "4" };
 //			String pick = scn.nextLine();
 //			boolean pickcheck = Arrays.asList(arr).contains(pick);
 //			if (pickcheck == false) {
@@ -172,100 +225,115 @@ public class MainMenu {
 //				continue;
 //			} else {
 //				int intpick = Integer.parseInt(pick);
-//
 //				switch (intpick) {
 //				case 1:
-//					m.signUp();
+//					s.sbmenuOrder1();
 //					break;
 //				case 2:
-//					m.SignIn(); // 로그인하고
-//					c = new CardManager(m.my); // 카드관리자에서도 로그인의 전역변수를 사용할 수 있게 세팅
-//					s = new SBMenuManager(m.my); // 주문관리자에서도 로그인의 전역변수를 사용할 수 있게 세팅
-//					subMenu();
+//					cardMenu();
 //					break;
 //				case 3:
-//					System.out.println("앱이 종료되었습니다");
-//					System.exit(0); // 메뉴 이리저리 옮겨다니다 보면 어느새 무한 루프에 빠져있다. 아예 앱을 꺼버리자
+//					m.memberView();
+//					break;
+//				case 4:
+//					m.signOut();
+//					mainMenu();
 //					break;
 //				}
 //			}
 //		}
 
 	}
-
-	public static void subMenu() {
-		while (true) { // 스캐너 입력값 유효성 검증 로직
-			System.out.println();
-			System.out.println("=======================");
-			System.out.println("===== 1.주문매장찾기 =====");
-			System.out.println("===== 2.스타벅스카드 =====");
-			System.out.println("===== 3.개인정보조회 =====");
-			System.out.println("===== 4.로 그 아 웃 =====");
-			System.out.println("=======================");
-			System.out.print("번호를 눌러주세요 >> ");
-
-			String arr[] = { "1", "2", "3", "4" };
-
-			String pick = scn.nextLine();
-			boolean pickcheck = Arrays.asList(arr).contains(pick);
-			if (pickcheck == false) {
-				System.out.println("올바른 키를 입력해주세요 >> ");
-				continue;
-			} else {
-				int intpick = Integer.parseInt(pick);
-				switch (intpick) {
-				case 1:
-					s.sbmenuOrder1();
-					break;
-				case 2:
-					cardMenu();
-					break;
-				case 3:
-					m.memberView();
-					break;
-				case 4:
-					m.signOut();
-					mainMenu();
-					break;
-				}
-			}
-		}
-
-	}
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
 
 	public static void cardMenu() {
+		System.out.println();
+		System.out.println("┌──────────────────────────────┐");
+		System.out.println("│                              │");
+		System.out.println("│        1. 카드 구매          │");
+		System.out.println("│        2. 카드 조회          │");
+		System.out.println("│        3. 메인 메뉴          │");
+		System.out.println("│                              │");
+		System.out.println("│      번호를 눌러주세요 >>    │");
+		System.out.println("│                              │");
+		System.out.println("└──────────────────────────────┘");
+
 		while (true) {
-			System.out.println();
-			System.out.println();
-			System.out.println("=======================");
-			System.out.println("===== 1.카 드 구 매 =====");
-			System.out.println("===== 2.카 드 조 회 =====");
-			System.out.println("===== 3.메 인 메 뉴 =====");
-			System.out.println("=======================");
-			System.out.print("번호를 눌러주세요 >> ");
-
-			String arr[] = { "1", "2", "3" };
-
 			String pick = scn.nextLine();
-			boolean pickcheck = Arrays.asList(arr).contains(pick);
-			if (pickcheck == false) {
-				System.out.println("올바른 키를 입력해주세요 >> ");
-				continue;
+			if (pick.equals("1")) {
+				c.cardInsert();
+			} else if (pick.equals("2")) {
+				c.cardList();
+			} else if (pick.equals("3")) {
+				subMenu();
 			} else {
-				int intpick = Integer.parseInt(pick);
-				switch (intpick) {
-				case 1:
-					c.cardInsert();
-					break;
-				case 2:
-					c.cardList();
-					break;
-				case 3:
-					subMenu();
-					break;
-				}
+				System.out.println("올바른 키를 입력해주세요 >> ");
 			}
+
 		}
+
+//		while (true) {
+//			System.out.println();
+//			System.out.println();
+//			System.out.println("=======================");
+//			System.out.println("===== 1.카 드 구 매 =====");
+//			System.out.println("===== 2.카 드 조 회 =====");
+//			System.out.println("===== 3.메 인 메 뉴 =====");
+//			System.out.println("=======================");
+//			System.out.print("번호를 눌러주세요 >> ");
+//
+//			String arr[] = { "1", "2", "3" };
+//
+//			String pick = scn.nextLine();
+//			boolean pickcheck = Arrays.asList(arr).contains(pick);
+//			if (pickcheck == false) {
+//				System.out.println("올바른 키를 입력해주세요 >> ");
+//				continue;
+//			} else {
+//				int intpick = Integer.parseInt(pick);
+//				switch (intpick) {
+//				case 1:
+//					c.cardInsert();
+//					break;
+//				case 2:
+//					c.cardList();
+//					break;
+//				case 3:
+//					subMenu();
+//					break;
+//				}
+//			}
+//		}
+	}
+
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+	// 한글 문자열 줄맞춤 프리셋 (구글링해도 드럽게 안 나옴. 함수로 쥐어짜다가 얻어걸림!)
+	// length는 양식틀 고정사이즈, kor은 견적낼 한글포함 문자열
+	// 한글을 공백으로 치환하여 String.length메서드가 한글을 2글자로 인식하게 해서 길이를 뽑는다
+	// 양식 사이즈와 kor 문자열의 견적길이 차이만큼 공백으로 메운다. (여기까지가 korPrint메서드)
+	// 뒤에 "│" 칸막이는 메서드 호출하는 데서 알아서 적절히 (표처럼 칼럼은 가변적이므로)
+	public static void korPrint(int length, String kor) {
+		int k = length - kor.replaceAll("[ㄱ-ㅎㅏ-ㅣ가-힣]", "  ").length();
+		for (int i = 0; i < k; i++) {
+			System.out.print(" ");
+		}
+
 	}
 
 }
