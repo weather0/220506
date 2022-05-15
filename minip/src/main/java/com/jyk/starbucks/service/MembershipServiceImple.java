@@ -245,7 +245,16 @@ public class MembershipServiceImple implements MembershipService {
 	// 회원탈퇴
 	@Override
 	public int memberDelete(MembershipInfo vo) {
-		return 0;
+		int n = 0;
+		try {
+			String sql = "DELETE FROM MEMBERS WHERE ID = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getId());
+			n = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return n;
 	}
 
 }

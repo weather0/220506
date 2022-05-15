@@ -54,10 +54,7 @@ public class MembershipInfo {
 	public static String secqlistString() {
 		for (int s = 0; s < secqlist().length; s++) {
 			System.out.print("│ " + secqlist()[s]);
-			int k = 72 - secqlist()[s].replaceAll("[ㄱ-ㅎㅏ-ㅣ가-힣]", "  ").length();
-			for (int i = 0; i < k; i++) {
-				System.out.print(" ");
-			}
+			MainMenu.korPrint(72, secqlist()[s]);
 			System.out.println(" │");
 		}
 		return null;

@@ -1,5 +1,7 @@
 package com.jyk.starbucks.vo;
 
+import com.jyk.starbucks.app.MainMenu;
+
 import lombok.Data;
 
 @Data
@@ -9,7 +11,10 @@ public class CardFace {
 	String card_avl;
 
 	public String toString() {
-		System.out.println(cardorder + ". " + card_name);
+		
+		System.out.print("│ " + cardorder + ". " + card_name);
+		MainMenu.korPrint(40, card_name);
+		System.out.println(" │");
 
 		return null;
 	}

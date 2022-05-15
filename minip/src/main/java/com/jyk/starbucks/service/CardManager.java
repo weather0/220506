@@ -42,27 +42,18 @@ public class CardManager {
 			case 0:
 				// 스택0 [선택지]
 				System.out.println();
-				System.out.println("┌──────────────────────────────────────────────────┐");
-				System.out.println("│                                                  │");
-				System.out.println("│                   멤버십 가입                    │");
-				System.out.println("│ ──────────────────────────────────────────────── │");
-				System.out.println("│            비밀번호를 입력해 주세요 >>           │");
-				System.out.println("│                                                  │");
-				System.out.println("│ (영문자, 숫자, 특수문자 반드시 포함 8~20자 이내, │");
-				System.out.println("│ 특수문자는 ~ ! @ # $ % ^ & + = - 만 가능합니다)  │");
-				System.out.println("│                                                  │");
-				System.out.println("│                                       z.메인으로 │");
-				System.out.println("└──────────────────────────────────────────────────┘");
-				
-				System.out.println();
-				System.out.println("────────────[ 카드 구매 ]────────────");
-				System.out.println("    새로운 스타벅스 카드를 만나보세요!");
-				System.out.println("───────────────────────────────────");
+				System.out.println("┌─────────────────────────────────────────────┐");
+				System.out.println("│                                             │");
+				System.out.println("│                 카드 구매                   │");
+				System.out.println("│ ─────────────────────────────────────────── │");
+				System.out.println("│      새로운 스타벅스 카드를 만나보세요!     │");
+				System.out.println("│                                             │");
 				display.toString();
-				System.out.println("───────────────────────────────────");
-				System.out.println("┌───────┐┌───────┐┌───────────────┐");
-				System.out.println("│ z.뒤로 ││ m.메인 ││ 카드번호 선택 >> │");
-				System.out.println("└───────┘└───────┘└───────────────┘");
+				System.out.println("│                                             │");
+				System.out.println("│         카드 번호를 선택해 주세요 >>        │");
+				System.out.println("│                                             │");
+				System.out.println("│                              z.뒤로  m.메인 │");
+				System.out.println("└─────────────────────────────────────────────┘");
 
 				String arr[] = new String[display.size() + 2]; // 선택지배열 생성(z,m자리 추가)
 				arr[0] = "z"; // z,m 배치
@@ -97,11 +88,16 @@ public class CardManager {
 				// display = {(order,name,avl),(order,name,avl),...,(order,name,avl)}
 
 				// <카드설명메서드 추가하기>
-
-				System.out.println("────────────────────────────────────────────────");
-				System.out.println("┌───────┐┌───────┐┌─────────────────────────────┐");
-				System.out.println("│ z.뒤로 ││ m.메인 ││ 구매하러 가기 >> (아무 키나 입력) │");
-				System.out.println("└───────┘└───────┘└─────────────────────────────┘");
+				
+				
+				System.out.println();
+				System.out.println("┌─────────────────────────────┐");
+				System.out.println("│                             │");
+				System.out.println("│  구매페이지로 이동하시려면  │");
+				System.out.println("│  아무 키나 눌러 주세요 >>   │");
+				System.out.println("│                             │");
+				System.out.println("│              z.뒤로  m.메인 │");
+				System.out.println("└─────────────────────────────┘");
 
 				String pick1 = scn.nextLine();
 				if (pick1.equals("z")) {
@@ -116,14 +112,24 @@ public class CardManager {
 			case 2:
 				// 스택2 [선택지]
 
-				System.out.println("-----------------------------");
-				System.out.println("얼마를 충전하시겠습니까?");
-				System.out.println("(카드 당 최대 50만원까지 보유 가능합니다)");
-				System.out.println("0. 5천원 \n1. 1만원\n2. 2만원\n3. 3만원\n5. 5만원\n6. 다른금액");
-				System.out.println("-----------------------------");
-				System.out.println("┌───────┐┌───────┐┌────────────────┐");
-				System.out.println("│ z.뒤로 ││ m.메인 ││ 구매 번호 선택 >> │");
-				System.out.println("└───────┘└───────┘└────────────────┘");
+				System.out.println();
+				System.out.println("┌─────────────────────────────────────┐");
+				System.out.println("│                                     │");
+				System.out.println("│              카드 구매              │");
+				System.out.println("│ ─────────────────────────────────── │");
+				System.out.println("│                                     │");
+				System.out.println("│       얼마를 충전하시겠습니까?      │");
+				System.out.println("│ (카드 당 최대 50만원까지 보유 가능) │");
+				System.out.println("│                                     │");
+				System.out.println("│             0. 5천원                │");
+				System.out.println("│             1. 1만원                │");
+				System.out.println("│             2. 2만원                │");
+				System.out.println("│             3. 3만원                │");
+				System.out.println("│             5. 5만원                │");
+				System.out.println("│             6. 다른금액             │");
+				System.out.println("│                                     │");
+				System.out.println("│                      z.뒤로  m.메인 │");
+				System.out.println("└─────────────────────────────────────┘");
 
 				String arr2[] = { "z", "m", "0", "1", "2", "3", "5", "6" }; // 배열 생성
 
@@ -177,9 +183,14 @@ public class CardManager {
 				}
 			case 3:
 				// 스택3 [선택지]
-				System.out.println("┌───────┐┌──────────────────────┐");
-				System.out.println("│ z.취소 ││ 금액 입력(1만원 단위) >> │");
-				System.out.println("└───────┘└──────────────────────┘");
+				
+				System.out.println();
+				System.out.println("┌─────────────────────────────┐");
+				System.out.println("│                             │");
+				System.out.println("│  금액 입력(1만원 단위) >>   │");
+				System.out.println("│                             │");
+				System.out.println("│                      z.취소 │");
+				System.out.println("└─────────────────────────────┘");
 
 				String other = scn.nextLine();
 				while (true) {
@@ -231,10 +242,10 @@ public class CardManager {
 	//
 
 	public void cardList() {
-		System.out.println("────────────[ 나의 카드 ]────────────");
 		if (dao.cardList(loginInfo).isEmpty()) {
 			System.out.println("보유중인 카드가 없습니다");
 		} else {
+			System.out.println();
 			System.out.println("┌────────────────────────────────────────────┬────────┬─────────────────────┬────────────┬────────────┐");
 			System.out.println("│                 카드이름                   │  잔액  │       카드번호      │  등록날짜  │  유효기간  │");
 			System.out.println("├────────────────────────────────────────────┼────────┼─────────────────────┼────────────┼────────────┤");
@@ -242,7 +253,7 @@ public class CardManager {
 			System.out.println("└────────────────────────────────────────────┴────────┴─────────────────────┴────────────┴────────────┘");
 			cardTopUp();
 		}
-		System.out.println("───────────────────────────────────");
+//		System.out.println("───────────────────────────────────");
 	}
 
 	//
@@ -262,9 +273,15 @@ public class CardManager {
 			switch (stn) {
 			case 0:
 				// 스택0 [선택지]
-				System.out.println("┌───────┐┌───────┐┌───────────────────────┐");
-				System.out.println("│ z.뒤로 ││ m.메인 ││ 카드충전(카드번호 선택) >> │");
-				System.out.println("└───────┘└───────┘└───────────────────────┘");
+				System.out.println();
+				System.out.println("┌────────────────────────────────┐");
+				System.out.println("│                                │");
+				System.out.println("│           카드 충전            │");
+				System.out.println("│ ────────────────────────────── │");
+				System.out.println("│  카드 번호를 선택해 주세요 >>  │");
+				System.out.println("│                                │");
+				System.out.println("│                 z.뒤로  m.메인 │");
+				System.out.println("└────────────────────────────────┘");
 				String arr[] = new String[mycardList.size() + 2]; // 선택지배열 생성(z,m자리 추가)
 				arr[0] = "z"; // z,m 배치
 				arr[1] = "m";
@@ -291,16 +308,29 @@ public class CardManager {
 			case 1:
 				// 스택1 [선택지]
 				intpick = Integer.parseInt(pick); // 형변환 int ← String
-				System.out.println("───────────────────────");
+				System.out.println();
+				System.out.println("┌────────────────────────────────────────────┬────────┬─────────────────────┬────────────┬────────────┐");
+				System.out.println("│                 카드이름                   │  잔액  │       카드번호      │  등록날짜  │  유효기간  │");
+				System.out.println("├────────────────────────────────────────────┼────────┼─────────────────────┼────────────┼────────────┤");
 				System.out.println(mycardList.get(intpick - 1).toString());
-				System.out.println("-----------------------------");
-				System.out.println("얼마를 충전하시겠습니까?");
-				System.out.println("(카드 당 최대 50만원까지 보유 가능합니다)");
-				System.out.println("1. 1만원\n2. 2만원\n3. 3만원\n5. 5만원\n6. 다른금액");
-				System.out.println("-----------------------------");
-				System.out.println("┌───────┐┌───────┐┌────────────────┐");
-				System.out.println("│ z.뒤로 ││ m.메인 ││ 구매 번호 선택 >> │");
-				System.out.println("└───────┘└───────┘└────────────────┘");
+				System.out.println("└────────────────────────────────────────────┴────────┴─────────────────────┴────────────┴────────────┘");
+				System.out.println();
+				System.out.println("┌─────────────────────────────────────┐");
+				System.out.println("│                                     │");
+				System.out.println("│              카드 충전              │");
+				System.out.println("│ ─────────────────────────────────── │");
+				System.out.println("│                                     │");
+				System.out.println("│       얼마를 충전하시겠습니까?      │");
+				System.out.println("│ (카드 당 최대 50만원까지 보유 가능) │");
+				System.out.println("│                                     │");
+				System.out.println("│             1. 1만원                │");
+				System.out.println("│             2. 2만원                │");
+				System.out.println("│             3. 3만원                │");
+				System.out.println("│             5. 5만원                │");
+				System.out.println("│             6. 다른금액             │");
+				System.out.println("│                                     │");
+				System.out.println("│                      z.뒤로  m.메인 │");
+				System.out.println("└─────────────────────────────────────┘");
 
 				String arr2[] = { "z", "m", "1", "2", "3", "5", "6" }; // 배열 생성
 
@@ -311,7 +341,12 @@ public class CardManager {
 						System.out.println("올바른 키를 입력해주세요 >> ");
 						continue;
 					} else if (pick2.equals("z")) {
+						System.out.println();
+						System.out.println("┌────────────────────────────────────────────┬────────┬─────────────────────┬────────────┬────────────┐");
+						System.out.println("│                 카드이름                   │  잔액  │       카드번호      │  등록날짜  │  유효기간  │");
+						System.out.println("├────────────────────────────────────────────┼────────┼─────────────────────┼────────────┼────────────┤");
 						dao.cardList(loginInfo).toString();
+						System.out.println("└────────────────────────────────────────────┴────────┴─────────────────────┴────────────┴────────────┘");
 						st.pop();
 						stn = st.lastElement();
 						continue loop;
@@ -351,9 +386,13 @@ public class CardManager {
 				}
 			case 2:
 				// 스택2 [선택지]
-				System.out.println("┌───────┐┌──────────────────────┐");
-				System.out.println("│ z.취소 ││ 금액 입력(1만원 단위) >> │");
-				System.out.println("└───────┘└──────────────────────┘");
+				System.out.println();
+				System.out.println("┌─────────────────────────────┐");
+				System.out.println("│                             │");
+				System.out.println("│  금액 입력(1만원 단위) >>   │");
+				System.out.println("│                             │");
+				System.out.println("│                      z.취소 │");
+				System.out.println("└─────────────────────────────┘");
 
 				String other = scn.nextLine();
 				while (true) {

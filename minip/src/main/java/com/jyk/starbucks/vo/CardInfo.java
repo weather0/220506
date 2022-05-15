@@ -3,6 +3,8 @@ package com.jyk.starbucks.vo;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
+import com.jyk.starbucks.app.MainMenu;
+
 import lombok.Data;
 
 @Data
@@ -21,10 +23,7 @@ public class CardInfo {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 		System.out.print("│ " + cardorder + ". " + card_name);
-		int k = 40 - card_name.replaceAll("[ㄱ-ㅎㅏ-ㅣ가-힣]", "  ").length();
-		for (int i = 0; i < k; i++) {
-			System.out.print(" ");
-		}
+		MainMenu.korPrint(40, card_name);
 		System.out.printf("│ %6d │ %s │", card_bal,
 				card_no + " │ " + sdf.format(card_regdate) + " │ " + sdf.format(card_expdate));
 		System.out.println();

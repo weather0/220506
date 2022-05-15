@@ -208,8 +208,9 @@ public class MembershipManager {
 					System.out.println("│     스타벅스 카드를 등록하시고     │");
 					System.out.println("│     다양한 혜택을 누려보세요.      │");
 					System.out.println("│                                    │");
+					System.out.println("│       아무 키나 눌러 주세요 >>     │");
+					System.out.println("│                                    │");
 					System.out.println("└────────────────────────────────────┘");
-					System.out.print("아무 키나 눌러 주세요 >> ");
 					scn.nextLine();
 					MainMenu.mainMenu();
 					break;
@@ -285,6 +286,7 @@ public class MembershipManager {
 			if (i < 5) {
 				if (password.equals(dao.memberView(member).getPassword())) {
 					my = member.getId(); // 비번일치(정상로그인)→로그인 성공한 id를 전역변수 my에 할당!!하고 빠져나옴
+					pw = password; // 전역변수pw에 지역변수password 할당(나중에 뒤로가기할 때 분기점으로 바로 가도록)
 					break;
 				} else {
 					System.out.println("비밀번호가 불일치합니다. 다시 정확히 입력해주세요 >> ");
@@ -509,15 +511,14 @@ public class MembershipManager {
 		if (password.equals("z")) { // 뒤로가기
 			MainMenu.subMenu();
 		}
-		pw = password; // 전역변수pw에 지역변수password 할당(나중에 뒤로가기할 때 분기점으로 바로 가도록)
 		memberView2(password);
 	}
 
 	// 조회화면 분기점
-	public void memberView2(String pw) {
+	public void memberView2(String myp) {
 		for (int i = 0; i < 6; i++) {
 			if (i < 5) {
-				if (pw.equals(dao.memberView(member).getPassword())) {
+				if (myp.equals(dao.memberView(member).getPassword())) {
 					System.out.println("┌──────────────────────────────────────────────────┐");
 					System.out.println("│                                                  │");
 					System.out.println("│              개인정보 조회 및 수정               │");
@@ -527,12 +528,15 @@ public class MembershipManager {
 					System.out.println("│                                                  │");
 					System.out.println("│   수정을 원하시는 항목을 선택해 주세요 >>        │");
 					System.out.println("│                                                  │");
-					System.out.println("│                                           z.뒤로 │");
+					System.out.println("│                               x.회원탈퇴  z.뒤로 │");
 					System.out.println("└──────────────────────────────────────────────────┘");
 					while (true) {
 						String mod = scn.nextLine();
 						if (mod.equals("z")) { // 뒤로가기
 							MainMenu.subMenu();
+						}
+						if (mod.equals("x")) {
+							memberDelete();
 						}
 						if (mod.equals("1") || mod.equals("2") || mod.equals("3")) {
 							memberUpdate(mod);
@@ -542,8 +546,8 @@ public class MembershipManager {
 					}
 				} else {
 					System.out.println("비밀번호가 불일치합니다. 다시 정확히 입력해주세요 >> ");
-					pw = scn.nextLine();
-					if (pw.equals("z")) { // 뒤로가기
+					myp = scn.nextLine();
+					if (myp.equals("z")) { // 뒤로가기
 						MainMenu.subMenu();
 					}
 				}
@@ -575,8 +579,6 @@ public class MembershipManager {
 	public void memberUpdate(String mod) {
 		switch (mod) {
 //		
-//		
-//		
 		// 비밀번호 변경
 		case "1":
 			System.out.println();
@@ -593,8 +595,7 @@ public class MembershipManager {
 				String password = scn.nextLine();
 				if (password.equals("z")) { // 뒤로가기
 					memberView2(pw); // 전역변수pw (여기 진입전에 위에서 이미 값을 넣어놓았다)
-				}
-				if (password.equals(pw)) {
+				} else if (password.equals(pw)) {
 					System.out.println("비밀번호가 이전과 동일합니다. 다시 입력해 주세요 >> ");
 
 				} else if (Pattern.matches("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[~!@#$%^&+=-])[a-zA-Z\\d~!@#$%^&+=-]{8,20}$",
@@ -790,4 +791,77 @@ public class MembershipManager {
 		memberView2(pw);
 	}
 
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+	// 회원탈퇴
+		public void memberDelete() {
+			System.out.println();
+			System.out.println("┌───────────────────────────────────────┐");
+			System.out.println("│                                       │");
+			System.out.println("│               회원 탈퇴               │");
+			System.out.println("│ ───────────────────────────────────── │");
+			System.out.println("│                                       │");
+			System.out.println("│   지금 탈퇴하시면 미사용된 별★과      │");
+			System.out.println("│   무료음료쿠폰은 즉시 소멸됩니다.     │");
+			System.out.println("│   또한 스타벅스만의 다양한 프로모션   │");
+			System.out.println("│   참가기회 또한 제한됩니다.           │");
+			System.out.println("│   그래도 정말로 탈퇴하시겠습니까?     │");
+			System.out.println("│                                       │");
+			System.out.println("│   탈퇴: 비밀번호를 입력해 주세요 >>   │");
+			System.out.println("│                                       │");
+			System.out.println("│                                       │");
+			System.out.println("│                                z.뒤로 │");
+			System.out.println("└───────────────────────────────────────┘");
+			String password = scn.nextLine();
+			if (password.equals("z")) { // 뒤로가기
+				memberView2(pw);
+			} 
+			for (int i = 0; i < 6; i++) {
+				if (i < 5) {
+					if (password.equals(dao.memberView(member).getPassword())) {
+						break;
+					} else {
+						System.out.println("비밀번호가 불일치합니다. 다시 정확히 입력해주세요 >> ");
+						password = scn.nextLine();
+						if (password.equals("z")) { // 뒤로가기
+							memberView2(pw);
+						}
+					}
+
+				} else {
+					System.out.print("비밀번호 입력 5회 오류! 5초 후 메인으로 돌아갑니다");
+					try {
+						for (int j = 0; j < 5; j++) {
+							TimeUnit.SECONDS.sleep(1);
+							System.out.print(".");
+						}
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					System.out.println();
+					MainMenu.mainMenu();
+				}
+			}
+
+			int n = dao.memberDelete(member);
+			if (n != 0) {
+				System.out.println("────────────────────────────────────────────");
+				System.out.println("멤버십 탈퇴가 완료되었습니다.");
+				System.out.println("그동안 스타벅스를 사랑해 주셔서 감사드립니다.");
+				System.out.println("────────────────────────────────────────────");
+				System.out.print("아무 키나 눌러 주세요 >> ");
+				scn.nextLine();
+				MainMenu.mainMenu();
+			} else {
+				System.out.println("실패");
+				MainMenu.mainMenu();
+			}
+			
+		}
 }

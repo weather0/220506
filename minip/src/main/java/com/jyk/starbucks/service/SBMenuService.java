@@ -28,7 +28,7 @@ public class SBMenuService {
 	public List<SBMenuInfo> menuDisplay(String type) {
 		List<SBMenuInfo> display = new ArrayList<SBMenuInfo>();
 		SBMenuInfo vo;
-		String sql = "SELECT MENU_NAME, MENU_PRICE, MENU_AVL FROM MENU WHERE MENU_TYPE2 = ? ORDER BY MENU_NAME";
+		String sql = "SELECT MN_NAME, MN_PRICE FROM MENU WHERE MN_TYPE2 = ? ORDER BY MN_NAME";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, type);
@@ -36,16 +36,70 @@ public class SBMenuService {
 			int i = 1;
 			while (rs.next()) {
 				vo = new SBMenuInfo();
-				vo.setMenuorder(i++);
-				vo.setMenu_name(rs.getString("menu_name"));
-				vo.setMenu_price(rs.getInt("menu_price"));
-				vo.setMenu_avl(rs.getInt("menu_avl"));
+				vo.setMnorder(i++);
+				vo.setMn_name(rs.getString("mn_name"));
+				vo.setMn_price(rs.getInt("mn_price"));
 				display.add(vo);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return display;
+
+	}
+
+//
+//
+//
+//	
+//	
+//	
+//	
+	// 상품 정보
+	public SBMenuInfo menuInfo(String pick) {
+		SBMenuInfo mnInfo = new SBMenuInfo();
+		String sql = "SELECT * FROM MENU WHERE MN_NAME = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, pick);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				mnInfo.setMn_no(rs.getInt("mn_no"));
+				mnInfo.setMn_name(rs.getString("mn_name"));
+				mnInfo.setMn_price(rs.getInt("mn_price"));
+				mnInfo.setMn_type1(rs.getString("mn_type1"));
+				mnInfo.setMn_type2(rs.getString("mn_type2"));
+				mnInfo.setMn_size0(rs.getString("mn_size0"));
+				mnInfo.setMn_size1(rs.getString("mn_size1"));
+				mnInfo.setMn_size2(rs.getString("mn_size2"));
+				mnInfo.setMn_size3(rs.getString("mn_size3"));
+				mnInfo.setMn_shot(rs.getInt("mn_shot"));
+				mnInfo.setMn_esso(rs.getString("mn_esso"));
+				mnInfo.setMn_frapro(rs.getInt("mn_frapro"));
+				mnInfo.setMn_syr_frap(rs.getString("mn_syr_frap"));
+				mnInfo.setMn_syr_dol(rs.getInt("mn_syr_dol"));
+				mnInfo.setMn_syr_van(rs.getInt("mn_syr_van"));
+				mnInfo.setMn_syr_haz(rs.getInt("mn_syr_haz"));
+				mnInfo.setMn_syr_crm(rs.getInt("mn_syr_crm"));
+				mnInfo.setMn_milk(rs.getString("mn_milk"));
+				mnInfo.setMn_milk_hot(rs.getString("mn_milk_hot"));
+				mnInfo.setMn_milk_foam(rs.getString("mn_milk_foam"));
+				mnInfo.setMn_milk_vol(rs.getString("mn_milk_vol"));
+				mnInfo.setMn_ice(rs.getString("mn_ice"));
+				mnInfo.setMn_java(rs.getString("mn_java"));
+				mnInfo.setMn_java_frap(rs.getInt("mn_java_frap"));
+				mnInfo.setMn_whip(rs.getString("mn_whip"));
+				mnInfo.setMn_drz(rs.getString("mn_drz"));
+				mnInfo.setMn_lid(rs.getString("mn_lid"));
+				mnInfo.setMn_etc(rs.getString("mn_etc"));
+				mnInfo.setMn_ntr(rs.getString("mn_ntr"));
+				mnInfo.setMn_spec(rs.getString("mn_spec"));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mnInfo;
 
 	}
 
@@ -62,38 +116,35 @@ public class SBMenuService {
 //
 //
 //
-	
+
 	// 장바구니 등록
-		public int cartInsert(CartInfo vo) {
-			int n = 0;
-			String sql2 = "INSERT INTO CART VALUES(?,?,?,?)";
-			try {
-				psmt = conn.prepareStatement(sql2);
-				psmt.setString(1, vo.getMenu_name());
-				psmt.setInt(2, vo.getMenu_price());
-				psmt.setInt(3, vo.getVolume());
-				psmt.setString(4, vo.getId());
-				n = psmt.executeUpdate();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return n;
+	public int cartInsert(CartInfo vo) {
+		int n = 0;
+		String sql2 = "INSERT INTO CART VALUES(?,?,?,?)";
+		try {
+			psmt = conn.prepareStatement(sql2);
+			psmt.setString(1, vo.getMn_name());
+//				psmt.setInt(2, vo.getMn_price());
+			psmt.setInt(3, vo.getVol());
+			psmt.setString(4, vo.getId());
+			n = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-			
-		//
-		//	
-		//
-		//	
-		//
-		//
-		//
-		//
-		//
-		//
-		
-		
-		
+		return n;
+	}
+
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
 //	// 상품 선택
 //	public int selectItem(SBMenuInfo vo, String id) {
 //		int n = 0;
@@ -131,7 +182,7 @@ public class SBMenuService {
 //	public List<SBMenuInfo> viewCart() {
 //		List<SBMenuInfo> viewCart = new ArrayList<SBMenuInfo>();
 //		SBMenuInfo vo;
-//		String sql = "CREATE OR REPLACE VIEW V_CART AS SELECT X.ID, M.MENU_NAME, M.MENU_PRICE FROM MENU M, MEMBERS X WHERE X.ID = ? AND M.MENU_NAME = ?";
+//		String sql = "CREATE OR REPLACE VIEW V_CART AS SELECT X.ID, M.MN_NAME, M.MN_PRICE FROM MENU M, MEMBERS X WHERE X.ID = ? AND M.MN_NAME = ?";
 //		try {
 //			psmt = conn.prepareStatement(sql);
 //			rs = psmt.executeQuery();
@@ -139,10 +190,9 @@ public class SBMenuService {
 //			while (rs.next()) {
 //				vo = new SBMenuInfo();
 //				vo.setMenuorder(i++);
-//				vo.setMenu_name(rs.getString("menu_name"));
-//				vo.setMenu_price(rs.getInt("menu_price"));
-//				vo.setMenu_avl(rs.getInt("menu_avl"));
-//				vo.setCart(rs.getInt("menu_cart"));
+//				vo.setMn_name(rs.getString("mn_name"));
+//				vo.setMn_price(rs.getInt("mn_price"));
+//				vo.setCart(rs.getInt("mn_cart"));
 //				viewCart.add(vo);
 //			}
 //		} catch (Exception e) {
