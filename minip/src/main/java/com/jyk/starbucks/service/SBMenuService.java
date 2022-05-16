@@ -148,16 +148,7 @@ public class SBMenuService {
 		return n;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	 // 장바구니 조회
+	// 장바구니 조회
 	public List<CartInfo> cartList(String id) { // CART테이블의 VO로서 CartInfo타입으로 ArrayList에 담음
 		List<CartInfo> cartList = new ArrayList<CartInfo>();
 		CartInfo vo;
@@ -167,6 +158,7 @@ public class SBMenuService {
 			psmt.setString(1, id);
 			rs = psmt.executeQuery();
 			int i = 1;
+			int cartsum = 0;
 			while (rs.next()) {
 				vo = new CartInfo();
 				vo.setCartorder(i++);
@@ -179,7 +171,6 @@ public class SBMenuService {
 				vo.setMn_esso(rs.getString("mn_esso"));
 				vo.setMn_syr_van(rs.getInt("mn_syr_van"));
 				vo.setMn_syr_haz(rs.getInt("mn_syr_haz"));
-				vo.setMn_syr_crm(rs.getInt("mn_syr_crm"));
 				vo.setMn_syr_crm(rs.getInt("mn_syr_crm"));
 				vo.setMn_milk(rs.getString("mn_milk"));
 				vo.setMn_milk_hot(rs.getString("mn_milk_hot"));
@@ -196,6 +187,9 @@ public class SBMenuService {
 				vo.setPcrm(rs.getInt("pcrm"));
 				vo.setPwhip(rs.getInt("pwhip"));
 				vo.setPdrz(rs.getInt("pdrz"));
+				cartsum += vo.getVol()*(vo.getMn_price() + vo.getPsize0() + vo.getPsize2() + vo.getPsize3() + vo.getPshot()
+						+ vo.getPesso() + vo.getPvan() + vo.getPhaz() + vo.getPcrm() + vo.getPwhip() + vo.getPdrz());
+				vo.setCartsum(cartsum);
 				cartList.add(vo);
 			}
 		} catch (Exception e) {
@@ -212,7 +206,7 @@ public class SBMenuService {
 //	
 //		
 	// 장바구니 삭제
-	
+
 	public int cartDelete(String id) {
 		int n = 0;
 		try {

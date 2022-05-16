@@ -21,7 +21,7 @@ public class MembershipServiceImple implements MembershipService {
 	@Override
 	public int signUp(MembershipInfo vo) {
 		int n = 0;
-		String sql = "INSERT INTO MEMBERS VALUES(?,?,?,?,?,?,?,?,?,DEFAULT,DEFAULT,DEFAULT)";
+		String sql = "INSERT INTO MEMBERS VALUES(?,?,?,?,?,?,?,?,?,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,?)";
 		try {
 			Calendar cal = new GregorianCalendar();
 			Timestamp ts = new Timestamp(cal.getTimeInMillis());
@@ -35,6 +35,7 @@ public class MembershipServiceImple implements MembershipService {
 			psmt.setTimestamp(7, ts);
 			psmt.setTimestamp(8, ts);
 			psmt.setTimestamp(9, ts);
+			psmt.setTimestamp(10, ts);
 			n = psmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -175,12 +176,15 @@ public class MembershipServiceImple implements MembershipService {
 				member.setPassword(rs.getString("password"));
 				member.setEmail(rs.getString("email"));
 				member.setContact(rs.getString("contact"));
-				member.setTier(rs.getString("tier"));
-				member.setStar(rs.getInt("star"));
-				member.setCoupon(rs.getInt("coupon"));
 				member.setSignupdate(rs.getTimestamp("signupdate"));
 				member.setSigninthis(rs.getTimestamp("signinthis"));
 				member.setSigninlast(rs.getTimestamp("signinlast"));
+				member.setTier(rs.getString("tier"));
+				member.setCoupon(rs.getInt("coupon"));
+				member.setStar_in(rs.getInt("star_in"));
+				member.setStar_out(rs.getInt("star_out"));
+				member.setStar_bal(rs.getInt("star_bal"));
+				member.setTierdate(rs.getTimestamp("tierdate"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -235,13 +239,14 @@ public class MembershipServiceImple implements MembershipService {
 
 	}
 
-//	
-//	
-//	
-//	
-//	
-//	
-//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
 	// 회원탈퇴
 	@Override
 	public int memberDelete(MembershipInfo vo) {
@@ -255,6 +260,111 @@ public class MembershipServiceImple implements MembershipService {
 			e.printStackTrace();
 		}
 		return n;
+	}
+
+//
+//
+//
+//
+//
+//
+//
+
+// 쿠폰조회(주문결제시 호출)
+	@Override
+	public int coupons(String id) {
+		String sql = "SELECT * FROM MEMBERS WHERE ID = ?";
+		int coupon = 0;
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				coupon = rs.getInt("coupon");
+//			member.setId(rs.getString("id"));
+//			member.setPassword(rs.getString("password"));
+//			member.setEmail(rs.getString("email"));
+//			member.setContact(rs.getString("contact"));
+//			member.setTier(rs.getString("tier"));
+//			member.setStar(rs.getInt("star"));
+//			member.setSignupdate(rs.getTimestamp("signupdate"));
+//			member.setSigninthis(rs.getTimestamp("signinthis"));
+//			member.setSigninlast(rs.getTimestamp("signinlast"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return coupon;
+	}
+
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	// 리워드(주문 직후 DB업데이트)
+	@Override
+	public int starin(String id) {
+		int n = 0;
+		String sql = "UPDATE MEMBERS SET STAR_IN = (STAR_IN + 1) WHERE ID = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			n = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return n;
+
+	}
+
+	@Override
+	public int starout(String id) {
+		int n = 0;
+		String sql = "UPDATE MEMBERS SET COUPON = 1, STAR_OUT = (STAR_OUT + 12) WHERE ID = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			n = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return n;
+
+	}
+	
+
+	// 골드 달성
+	@Override
+	public int gold(String id) {
+		int n = 0;
+		String sql = "UPDATE MEMBERS SET TIER = 'GOLD', COUPON = 1, TIERDATE = SYSDATE WHERE ID = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			n = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return n;
+
+	}
+	@Override
+	// 쿠폰 사용
+	public int couponout(String id) {
+		int n = 0;
+		String sql = "UPDATE MEMBERS SET COUPON = 0 WHERE ID = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			n = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return n;
+
 	}
 
 }

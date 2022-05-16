@@ -4,17 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Stack;
-
-import org.w3c.dom.css.ViewCSS;
+import java.util.concurrent.TimeUnit;
 
 import com.jyk.starbucks.app.MainMenu;
-import com.jyk.starbucks.vo.CardFace;
 import com.jyk.starbucks.vo.CardInfo;
 import com.jyk.starbucks.vo.CartInfo;
+import com.jyk.starbucks.vo.MembershipInfo;
 import com.jyk.starbucks.vo.SBMenuInfo;
-
-import oracle.net.aso.c;
 
 public class SBMenuManager {
 
@@ -25,8 +21,15 @@ public class SBMenuManager {
 	SBMenuInfo mnInfo = new SBMenuInfo(); // 단일상품정보(실시간 음료커스텀용 변수)
 	List<CartInfo> cartlist = new ArrayList<CartInfo>(); // 카트내 상품 리스트
 	CartInfo cart = new CartInfo(); // 단일 카트
-
 	// dao -> mnInfo -> myshot, mysize, ... -> cart
+
+	// 주문관련
+	CardService dao2 = new CardService();
+	MembershipService daoM = new MembershipServiceImple();
+	int cartsum = 0;
+	CardInfo mycard = new CardInfo(); // 결제할 스벅카드
+//	List<CardInfo> cardlist = new ArrayList<CardInfo>();
+	MembershipInfo myid = new MembershipInfo();
 
 	// 로그인세션 유지 관련
 	public SBMenuManager(String loginInfo) {
@@ -44,6 +47,7 @@ public class SBMenuManager {
 	String pickV = null;
 	String pickP = null;
 	String pickC = null;
+	String pickO = null;
 	int intpick1 = 0;
 	int intpick2 = 0;
 	int intpick3 = 0;
@@ -52,6 +56,7 @@ public class SBMenuManager {
 	int intpick6 = 0;
 	int intpickP = 0;
 	int intpickC = 0;
+	int intpickO = 0;
 	String mnp = null; // 선택상품이름(기본키)
 
 	// 나의 메뉴 관련 전역 변수
@@ -406,11 +411,11 @@ public class SBMenuManager {
 		// 사이즈
 		String mysize = cart.getMysize();
 		if (mysize.equals("숏")) {
-			System.out.println("  숏                          " + psize0 + "원");
+			System.out.println("  숏                           " + psize0 + "원");
 		} else if (mysize.equals("톨")) {
 			System.out.println("  톨                            기본");
 		} else if (mysize.equals("그란데")) {
-			System.out.println("  그란데                      +" + psize2 + "원");
+			System.out.println("  그란데                       +" + psize2 + "원");
 		} else if (mysize.equals("벤티")) {
 			System.out.println("  벤티                        +" + psize3 + "원");
 		}
@@ -425,19 +430,19 @@ public class SBMenuManager {
 
 		// 에쏘옵션
 		if (pesso >= 300) {
-			System.out.println("  " + myesso + "                    +" + pesso + "원");
+			System.out.println("  " + myesso + "                       +" + pesso + "원");
 		}
 		// 바닐라시럽
 		if (pvan >= 600) {
-			System.out.println("  바닐라시럽 " + myvanilla + "                +" + pvan + "원");
+			System.out.println("  바닐라시럽 " + myvanilla + "                 +" + pvan + "원");
 		}
 		// 헤이즐넛시럽
 		if (phaz >= 600) {
-			System.out.println("  헤이즐넛시럽 " + myhazelnut + "              +" + phaz + "원");
+			System.out.println("  헤이즐넛시럽 " + myhazelnut + "               +" + phaz + "원");
 		}
 		// 카라멜시럽
 		if (pcrm >= 600) {
-			System.out.println("  카라멜시럽 " + mycaramel + "                +" + pcrm + "원");
+			System.out.println("  카라멜시럽 " + mycaramel + "                 +" + pcrm + "원");
 		}
 		// 우유 종류
 		if (mymilk != null && mymilk != " ") {
@@ -453,11 +458,11 @@ public class SBMenuManager {
 		}
 		// 휘핑
 		if (pwhip >= 600) {
-			System.out.println("  " + mywhip + "         +" + pwhip + "원");
+			System.out.println("  " + mywhip + "          +" + pwhip + "원");
 		}
 		// 드리즐
 		if (pdrz >= 600) {
-			System.out.println("  " + mydrizzle + "         +" + pdrz + "원");
+			System.out.println("  " + mydrizzle + "            +" + pdrz + "원");
 		}
 
 		// 총합계
@@ -555,7 +560,47 @@ public class SBMenuManager {
 				} else {
 					System.out.println("입력 실패");
 				}
-				cart = null; // 손은 비워짐
+				// 확정된 건 지움
+				cart.setMn_name(null);
+				cart.setMn_price(0);
+				cart.setMn_shot(0);
+				cart.setMn_esso(null);
+				cart.setMn_syr_van(0);
+				cart.setMn_syr_haz(0);
+				cart.setMn_syr_crm(0);
+				cart.setMn_milk(null);
+				cart.setMn_milk_hot(null);
+				cart.setMn_milk_foam(null);
+				cart.setMn_whip(null);
+				cart.setMn_drz(null);
+				cart.setPsize0(0);
+				cart.setPsize2(0);
+				cart.setPsize3(0);
+				cart.setPshot(0);
+				cart.setPesso(0);
+				cart.setPvan(0);
+				cart.setPhaz(0);
+				cart.setPcrm(0);
+				cart.setPwhip(0);
+				cart.setPdrz(0);
+				myvanilla = 0;
+				myhazelnut = 0;
+				mycaramel = 0;
+				mymilk = null;
+				mymilkhot = null;
+				mymilkfoam = null;
+				mywhip = null;
+				mydrizzle = null;
+				psize0 = 0;
+				psize2 = 0;
+				psize3 = 0;
+				pshot = 0;
+				pesso = 0;
+				pvan = 0;
+				phaz = 0;
+				pcrm = 0;
+				pwhip = 0;
+				pdrz = 0;
 
 				viewCart();
 			}
@@ -575,24 +620,29 @@ public class SBMenuManager {
 
 	// 장바구니
 	public void viewCart() {
+		cartlist = dao.cartList(loginInfo);
 		System.out.println();
-		System.out.println("┌────────────────────────────────────────────────────────────────┐");
+		System.out.println("┌──────────────────────────────────────────────────────────────┐");
 		System.out.println("                                      ");
 		System.out.println("                            O r d e r              ");
-		System.out.println("  ───────────────────────────────────────────────────────────────  ");
-		dao.cartList(loginInfo).toString();
+		System.out.println(" ──────────────────────────────────────────────────────────────  ");
+		cartlist.toString();
+		if (cartlist.size() != 0) { // 장바구니 비우고 나면 bound 예외떠서 처리
+			cartsum = cartlist.get(cartlist.size() - 1).getCartsum();
+		} else {
+			cartsum = 0;
+			System.out.println("카트가 비었습니다");
+		}
+		System.out.print("                                        합계 ");
+		System.out.printf("%6d", cartsum);
+		System.out.println();
+		System.out.println();
 		System.out.println("                        ┌─────────────────┐");
 		System.out.println("                        │ c.주문하러 가기 │");
 		System.out.println("                        └─────────────────┘");
-		System.out.println("                                        x.비우기  z.뒤로  m.메인 ");
-		System.out.println("└────────────────────────────────────────────────────────────────┘");
-//				System.out.println();
-//				System.out.println("┌───────────────────────────────────┐");
-//				System.out.println("│                                   │");
-//				System.out.println("│  장바구니 번호를 선택해주세요 >>  │");
-//				System.out.println("│                                   │");
-//				System.out.println("│                    z.뒤로  m.메인 │");
-//				System.out.println("└───────────────────────────────────┘");
+		System.out.println();
+		System.out.println("                                      x.비우기  z.뒤로  m.메인 ");
+		System.out.println("└──────────────────────────────────────────────────────────────┘");
 
 		String arr[] = { "z", "m", "c", "x" }; // 선택지배열 생성(z자리 추가)
 		while (true) {
@@ -625,20 +675,224 @@ public class SBMenuManager {
 						System.out.println("장바구니를 비웠습니다.");
 						viewCart();
 					} else {
-						System.out.println("실패");
+						System.out.println("이미 비워져 있습니다.");
 					}
 				}
 
 			} else {
-				
-				// 주문메서드로 이동
-
+				sirenOrder();
 			}
 		}
 
 	}
 
 //	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+	// 주문창
+	public void sirenOrder() {
+		System.out.println();
+		System.out.println("┌───────────────────────────────────────────────┐");
+		System.out.println("");
+		System.out.println("                    O r d e r               ");
+		System.out.println(" ─────────────────────────────────────────────── ");
+		System.out.println("  s.스타벅스카드 선택                 (카드잔액)");
+		System.out.println("");
+		System.out.print("  ");
+		if (dao2.cardList(loginInfo).size() > 0) { // 스벅카드 보유해야지만 주문진행 가능
+			if (intpickO == 0) { // 여기 처음으로 진입 = 전역변수 초기값(0)인 상태면,
+				mycard = dao2.cardList(loginInfo).get(0);
+				dao2.cardList(loginInfo).get(0).oneCardString(); // 일단 0번카드(order by desc 최상위) 뿌려라
+			} else { // 카드 바꿨다면, 그걸로 선택
+				mycard = dao2.cardList(loginInfo).get(intpickO - 1);
+				dao2.cardList(loginInfo).get(intpickO - 1).oneCardString();
+			}
+		} else {
+			System.out.println("스타벅스 카드가 없습니다.");
+			System.out.println("  먼저 카드부터 구매해 주세요");
+		}
+		System.out.println();
+
+		System.out.println(" ----------------------------------------------- ");
+		System.out.println("  장바구니 금액                            " + cartsum);
+
+		// 쿠폰 있으면 자동적용
+		int discount = 0;
+		if (daoM.coupons(loginInfo) > 0) {
+			System.out.println(" ----------------------------------------------- ");
+			System.out.println("  무료음료쿠폰 자동 적용");
+			System.out.println("");
+
+			// 장바구니 상품 중 단품 기본 가격이 가장 큰 것 찾기
+			discount = cartlist.get(0).getMn_price();
+			for (int i = 0; i < cartlist.size(); i++) {
+				if (cartlist.get(i).getMn_price() > discount) {
+					discount = cartlist.get(i).getMn_price();
+				}
+			}
+			System.out.println("                                   적용중 -" + discount);
+		}
+		System.out.println(" ─────────────────────────────────────────────── ");
+		System.out.println("                 ┌────────────┐                  ");
+		System.out.println("                 │ c.주문확정 │       최종 " + (cartsum - discount));
+		System.out.println("                 └────────────┘                  ");
+		System.out.println();
+		System.out.println("                                 z.뒤로  m.메인 ");
+		System.out.println("└───────────────────────────────────────────────┘");
+		String arr[] = { "z", "m", "c", "s" }; // 선택지배열 생성(z자리 추가)
+		while (true) {
+			pickO = scn.nextLine();
+			boolean pickcheck = Arrays.asList(arr).contains(pickO); // 배열 내 특정값 찾기
+			if (pickcheck == false) { // 상황1: 완전 엉뚱한 값 입력
+				System.out.println("올바른 키를 입력해주세요 >> ");
+				continue; // {z, m, 1, 2, 3, ...} 중에 하나 제대로 입력할 때까지 루프
+			} else if (pickO.equals("z")) { // 상황2: '뒤로'
+				viewCart();
+			} else if (pickO.equals("m")) { // 상황3: '메인'
+				MainMenu.subMenu();
+			} else if (pickO.equals("c")) {
+				if ((cartsum - discount) > mycard.getCard_bal()) {
+					System.out.println("스타벅스카드 잔액이 부족합니다.");
+					System.out.println("충전을 먼저 하고 진행해주세요 >>");
+					continue;
+				} else {
+					System.out.println();
+					System.out.println("┌────────────────────────────────────────┐");
+					System.out.println("│                                        │");
+					System.out.println("│          주문이 완료되었습니다         │");
+					System.out.println("│     픽업대에서 고객님을 기다릴게요!    │");
+					System.out.println("│                                        │");
+					System.out.println("│  ------------------------------------  │");
+					System.out.println("│  스타벅스 리워드 별★이 적립되었습니다. │");
+					System.out.println("│                                        │");
+					System.out.println("│    골드등급은 별★12개를 모을 때마다    │");
+					System.out.println("│    무료음료쿠폰을 1개 제공해 드려요.   │");
+					System.out.println("│                                        │");
+					System.out.println("│                아무키나 눌러주세요 >>  │");
+					System.out.println("└────────────────────────────────────────┘");
+
+					int n = 0;
+					// 스벅카드수정
+					dao2.afterOrder((cartsum - discount), loginInfo, mycard.getCard_no());
+					if (discount > 0) {
+						n = daoM.couponout(loginInfo);
+					}
+
+					// 별적립
+					n = daoM.starin(loginInfo);
+
+					// 골드달성
+					myid.setId(loginInfo);
+					myid = daoM.memberView(myid);
+					if (myid.getStar_in() == 30) {
+						n = daoM.gold(loginInfo);
+					}
+
+					// 별쿠폰발행
+					myid = daoM.memberView(myid);
+					if (myid.getStar_bal() == 12) {
+						n = daoM.starout(loginInfo);
+					}
+
+//					myid.setId(loginInfo);
+//					myid = daoM.memberView(myid);
+
+//						daoM.starout(myid);
+
+//					
+//					
+//					
+//					
+
+				}
+				scn.nextLine();
+				MainMenu.subMenu();
+			} else if (pickO.equals("s")) {
+				System.out.println("┌───────────────────────────────────────────────────┐");
+				System.out.println();
+				System.out.println("     스타벅스 카드를 선택해주세요 >> ");
+				System.out.println("");
+				for (int i = 0; i < dao2.cardList(loginInfo).size(); i++) {
+					if (i >= 0 && i < 9) {
+						System.out.print("   ");
+					} else {
+						System.out.print("  ");
+					}
+					System.out.print((i + 1) + ". ");
+					dao2.cardList(loginInfo).get(i).oneCardString();
+				}
+				System.out.println();
+				System.out.println("                                     z.뒤로  m.메인 ");
+				System.out.println("└───────────────────────────────────────────────────┘");
+				String arr2[] = new String[dao2.cardList(loginInfo).size() + 2]; // 선택지배열 생성(z,m자리 추가)
+				arr2[0] = "z"; // z,m 배치
+				arr2[1] = "m";
+				for (int i = 2; i < dao2.cardList(loginInfo).size() + 2; i++) { // 나머지 자리 채운다
+					arr2[i] = i - 1 + ""; // 형변환 String ← int // arr2[2] = 1이어야 하므로
+				}
+				while (true) {
+					pickO = scn.nextLine();
+					boolean pickcheck2 = Arrays.asList(arr2).contains(pickO); // 배열 내 특정값 찾기
+					if (pickcheck2 == false) { // 상황1: 완전 엉뚱한 값 입력
+						System.out.println("올바른 키를 입력해주세요 >> ");
+						continue; // {z, m, 1, 2, 3, ...} 중에 하나 제대로 입력할 때까지 루프
+					} else if (pickO.equals("z")) { // 상황2: '뒤로'
+						sirenOrder();
+					} else if (pickO.equals("m")) { // 상황3: '메인'
+						MainMenu.subMenu();
+					} else {
+						intpickO = Integer.parseInt(pickO);
+						sirenOrder();
+					}
+				}
+
+			}
+		}
+
+	}
+
+	//
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	
+//	//스타벅스리워드
+	public void rewards() {
+		myid.setId(loginInfo);
+		myid = daoM.memberView(myid);
+		System.out.println();
+		System.out.println("┌───────────────────────────────────────────┐");
+		System.out.println("                                           ");
+		System.out.println("               R e w a r d s               ");
+		System.out.println("  ───────────────────────────────────────── ");
+		System.out.println("  스타벅스 리워드에 오신 것을 환영합니다.  ");
+		System.out.println("                                            ");
+		System.out.println("  현재 고객님의 등급은 " + myid.getTier() + "입니다");
+		System.out.println("                                           ");
+		System.out.println("  현재 별 개수는 " + myid.getStar_bal() + "입니다");
+		System.out.println("                                            ");
+		System.out.println("                             z.뒤로  m.메인 ");
+		System.out.println("└───────────────────────────────────────────┘");
+
+		scn.nextLine();
+		MainMenu.subMenu();
+
+	}
+
 //	
 //	
 //	

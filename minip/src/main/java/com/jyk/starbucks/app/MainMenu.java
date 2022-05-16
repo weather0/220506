@@ -22,122 +22,120 @@ public class MainMenu {
 
 	public static void mainMenu() {
 
-//		try {
+		try {
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⡛⠛⠋⠀⠀⠙⠛⠛⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⣿⣿⣿⣿⣿⡦⠀⠀⠀⠀⢴⣿⣿⣿⣿⣿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀⠉⠻⣿⠃⠀⣠⣄⠀⠘⣿⠟⠉⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡌⠉⠙⠧⠀⠀⠀⠀⠐⠚⠛⠛⠛⠂⠀⠀⠀⠀⠼⠛⠉⢡⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠻⣿⣿⣿⣿⣿⣿⣿⣿⣄⠀⠀⠀⢀⣀⣤⣤⣤⣤⣤⣤⣤⣤⣀⣀⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⣿⠟⢩⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣦⣶⣿⡿⣻⠟⠋⠁⠀⠀⠈⠉⠻⣿⢻⣿⣶⣤⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠋⠉⠀⠀⢀⣴⣿⢟⡟⣱⠏⣸⣧⣤⣤⣀⠀⠀⣀⣤⣤⣼⣧⠹⣮⠻⡝⣿⣦⡀⠀⠀⠉⠙⠀⠀⠀⢹⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⢣⡟⢰⡟⠀⣿⣧⣶⣮⣿⠆⢠⣿⣵⣶⣼⣿⡄⢹⡇⢹⡌⢿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠻⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⢀⣀⣤⣤⣠⣿⣿⣿⡇⣼⡇⢸⡇⠀⣿⠁⠈⠁⠈⠀⠀⠃⠀⠁⠀⣿⠃⢸⡷⠈⣿⠸⣿⣿⣿⣄⣤⣤⣄⣀⠀⠀⠙⢿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣥⣤⣶⡿⠟⠛⠛⣻⣿⣿⣿⣿⡇⢻⡇⠸⣿⡀⠹⣇⠀⠀⠀⠛⠛⠀⠀⠀⢰⡟⠀⣾⡇⢰⣿⠀⣿⣿⣿⣿⣟⠛⠛⠻⢿⣶⣤⣬⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⠛⠛⠋⠁⢀⣀⣤⣴⣿⣿⣿⣿⣿⣇⠘⣷⠀⢻⣧⠀⢻⣆⠀⠙⠻⠟⠋⠀⣰⡟⠀⣼⡟⠀⣾⠇⢸⣿⣿⣿⣿⣿⣦⣤⣄⡀⠈⠙⠛⠛⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣤⣤⣴⣾⠿⠛⠛⣿⣿⣿⣿⣿⣿⣿⡀⢻⡇⠈⣿⡆⠈⣿⣷⣤⣀⣀⣤⣾⣿⠃⢠⣿⠃⢸⣿⠀⣿⣿⣿⣿⣿⣿⣿⡛⠛⠿⣷⣦⣤⣤⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⠛⠛⠋⠁⣀⣤⣼⣿⣿⣿⣿⣿⣿⡿⠁⣾⠇⢠⣿⠇⢀⣿⠏⠉⠛⠛⠋⠙⣿⡄⠘⣿⡆⠸⣿⡀⢻⣿⣿⣿⣿⣿⣿⣧⣤⣀⠀⠉⠛⠛⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣧⣤⣶⣿⠿⠛⢻⣿⣿⣿⣿⣿⠟⢀⡾⠋⣠⡿⠋⢀⣾⠏⠀⠀⠀⠀⠀⠀⠹⣷⡄⠘⢿⣆⠘⢷⣄⠹⣿⣿⣿⣿⣿⣿⠛⠿⣿⣶⣤⣴⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣷⠛⠋⠁⣠⣴⣾⣿⣿⣿⣿⠋⣰⡿⠁⣼⡟⠁⣰⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣆⠀⢻⣧⠀⢻⣆⠘⣿⣿⣿⣿⣿⣦⣄⡀⠉⠛⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣗⣶⣿⠟⠛⢻⣿⣿⣿⠟⠀⣿⡇⠀⣿⡇⠀⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⠀⢸⣿⠇⢸⣿⠀⠻⢿⣿⣿⡟⠛⠻⣿⣶⢶⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⡍⠁⣠⣶⣿⠉⠁⠀⠀⠀⠘⣷⡀⠹⣷⡀⠘⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⣠⣿⠃⢀⣾⠟⢀⣾⠏⠀⠀⠀⠈⠉⣽⣶⣄⡈⢩⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⢁⣀⠀⠀⠀⢀⣤⣿⣿⡄⠙⣿⡄⠈⢿⣦⠀⠀⠀⠀⠀⠀⣰⡿⠃⢠⣾⠏⢠⣾⣿⣦⣀⠀⠀⠀⢀⣈⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⢴⣿⠟⠲⣶⣾⣿⣿⣿⢺⣿⠀⢸⣿⡄⠈⣿⣧⠀⠀⠀⠀⣸⣿⠁⢀⣿⡏⠀⣿⡏⣿⣿⣿⣿⣶⡖⠻⣿⣷⣴⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣅⣰⣾⡿⣿⣿⣿⠏⣸⡿⠀⢸⣿⠃⠀⣿⡿⠀⠀⠀⠀⢻⣿⠀⠈⣿⣇⠀⢿⣧⠙⣿⣿⣿⢿⣿⣦⣨⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⢠⣾⡿⠃⣰⡿⠁⢠⣿⠏⠀⣸⣿⠃⠀⠀⠀⠀⠈⢿⣧⠀⠘⣿⣆⠈⢿⣧⠈⢿⣷⣄⣹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣃⢸⣿⠁⢠⣿⠏⠀⣰⣿⠃⠀⠀⠀⠀⠀⠀⠈⣿⣧⠀⠸⣿⣆⠈⣿⣧⢈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣄⣿⣿⠀⢠⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡆⠀⢻⣿⣠⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣾⣿⣧⣀⣀⣀⣀⣀⣀⣀⣀⣼⣿⣷⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⠋⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⡿⠁⠀⠀⠈⣿⣿⠀⠀⠀⠀⠀⠙⢿⠀⠀⠀⠀⠀⠙⡇⠀⠀⢸⣿⠀⠀⢸⡿⠋⠀⠀⠀⠀⢸⠀⠀⠀⠃⠀⠀⣀⠋⠁⠀⠀⠀⢨⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⠀⠀⠈⠉⠲⢿⣶⡆⠀⠀⣶⣶⠃⠀⠀⠀⠀⠸⣿⠀⠀⠀⠃⠀⠀⣼⠀⠀⠈⠁⠀⢀⡇⠀⠀⢸⣿⠀⠀⢸⠀⠀⢀⣴⣿⣶⣿⠀⠀⠀⠀⠀⣾⣿⠀⠀⠀⠉⠒⢾");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⠓⠢⠄⠀⠀⠀⣿⡇⠀⠀⣿⣿⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠈⣿⠀⠀⢰⠄⠀⠀⡇⠀⠀⠸⠟⠀⠀⢸⠀⠀⠀⠻⠿⠿⣿⠀⠀⠀⠀⠀⠘⣿⠛⠲⠤⠀⠀⠀⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⡀⠀⠀⠀⣀⣴⣿⡇⠀⠀⣿⡇⠀⠀⣶⣶⠀⠀⠘⠀⠀⠀⣆⠀⠀⢹⠀⠀⠀⠀⣀⣠⣿⣦⠀⠀⠀⠀⣠⣾⣷⣄⠀⠀⠀⠀⣹⠀⠀⠀⣦⠀⠀⠈⡀⠀⠀⠀⣀⣴⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(20);
+			TimeUnit.MILLISECONDS.sleep(20);
 			System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-//			TimeUnit.MILLISECONDS.sleep(700);
+			TimeUnit.MILLISECONDS.sleep(700);
 
 			System.out.println("────────────────────────────────────────────────────────────────────────");
-//			TimeUnit.MILLISECONDS.sleep(30);
+			TimeUnit.MILLISECONDS.sleep(30);
 			System.out.println();
-//			TimeUnit.MILLISECONDS.sleep(30);
+			TimeUnit.MILLISECONDS.sleep(30);
 			System.out.println("          스타벅스만의 특별한 혜택, 스타벅스 리워드를 만나보세요");
-//			TimeUnit.MILLISECONDS.sleep(30);
+			TimeUnit.MILLISECONDS.sleep(30);
 			System.out.println();
-//			TimeUnit.MILLISECONDS.sleep(30);
+			TimeUnit.MILLISECONDS.sleep(30);
 			System.out.println("          스타벅스 리워드는 스타벅스를 사랑해주시는 고객님을 위해 ");
-//			TimeUnit.MILLISECONDS.sleep(30);
+			TimeUnit.MILLISECONDS.sleep(30);
 			System.out.println("      별★을 적립하여 혜택으로 돌려드리는 특별한 리워드 서비스입니다.");
-//			TimeUnit.MILLISECONDS.sleep(30);
+			TimeUnit.MILLISECONDS.sleep(30);
 			System.out.println();
-//			TimeUnit.MILLISECONDS.sleep(30);
+			TimeUnit.MILLISECONDS.sleep(30);
 			System.out.println("             등록된 스타벅스 카드를 매장에서 사용해보세요. ");
-//			TimeUnit.MILLISECONDS.sleep(30);
+			TimeUnit.MILLISECONDS.sleep(30);
 			System.out.println("            스타벅스의 또 다른 즐거움을 느끼실 수 있습니다!");
-//			TimeUnit.MILLISECONDS.sleep(30);
+			TimeUnit.MILLISECONDS.sleep(30);
 			System.out.println();
-//			TimeUnit.MILLISECONDS.sleep(30);
+			TimeUnit.MILLISECONDS.sleep(30);
 			System.out.println("────────────────────────────────────────────────────────────────────────");
 			System.out.println();
 			System.out.println("                         별★을 차곡차곡 쌓으세요!");
 			System.out.println("               스타벅스의 다양한 혜택을 경험할 수 있습니다!");
 			System.out.println();
-//			TimeUnit.MILLISECONDS.sleep(30);
+			TimeUnit.MILLISECONDS.sleep(30);
 			System.out.println("                 30개의 별★이 모이면 Gold Level이 됩니다!");
-//			TimeUnit.MILLISECONDS.sleep(30);
+			TimeUnit.MILLISECONDS.sleep(30);
 			System.out.println("       일 년 동안 30개의 별★이 더 모이면 Gold Level이 1년 연장됩니다.");
-//			TimeUnit.MILLISECONDS.sleep(30);
+			TimeUnit.MILLISECONDS.sleep(30);
 			System.out.println();
-//			TimeUnit.MILLISECONDS.sleep(30);
-			System.out.println("              Welcome Level  ▶  Green Level  ▶  Gold Level");
-//			TimeUnit.MILLISECONDS.sleep(30);
-			System.out.println();
-//			TimeUnit.MILLISECONDS.sleep(30);
+			TimeUnit.MILLISECONDS.sleep(30);
 			System.out.println("────────────────────────────────────────────────────────────────────────");
-//			TimeUnit.MILLISECONDS.sleep(700);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
+			TimeUnit.MILLISECONDS.sleep(700);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		System.out.println();
 		System.out.println("┌────────────────────────────────┐");
 		System.out.println("│                                │");
 		System.out.println("│         1. 멤버십 가입         │");
+		System.out.println("│                                │");
 		System.out.println("│         2. 로  그  인          │");
+		System.out.println("│                                │");
 		System.out.println("│         3. 앱  종  료          │");
 		System.out.println("│                                │");
 		System.out.println("│       번호를 눌러주세요 >>     │");
@@ -182,17 +180,18 @@ public class MainMenu {
 		System.out.println("⠀⠀⠈⠙⠹⢱⠃⠀⢹⡼⠞⠉⠤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀            ⠀ ");
 		System.out.println();
 		System.out.println("────────────────────────────────────────────────────────────────────────");
-//		System.out.println("");
-//		System.out.println("고객님");
-//		System.out.println("환경을 ");
-//		System.out.println("");
 		System.out.println();
 		System.out.println("┌──────────────────────────────────┐");
 		System.out.println("│                                  │");
-		System.out.println("│         1. 주문매장 찾기         │");
+		System.out.println("│         1. 사이렌 오더           │");
+		System.out.println("│                                  │");
 		System.out.println("│         2. 스타벅스 카드         │");
-		System.out.println("│         3. 개인정보 조회         │");
-		System.out.println("│         4. 로  그  아 웃         │");
+		System.out.println("│                                  │");
+		System.out.println("│         3. 스타벅스 리워드       │");
+		System.out.println("│                                  │");
+		System.out.println("│         4. 개인정보 조회         │");
+		System.out.println("│                                  │");
+		System.out.println("│         5. 로그아웃              │");
 		System.out.println("│                                  │");
 		System.out.println("│       번호를 눌러주세요 >>       │");
 		System.out.println("│                                  │");
@@ -206,43 +205,16 @@ public class MainMenu {
 			} else if (pick.equals("2")) {
 				cardMenu();
 			} else if (pick.equals("3")) {
-				m.memberView();
+				s.rewards();
 			} else if (pick.equals("4")) {
+				m.memberView();
+			} else if (pick.equals("5")) {
 				m.signOut();
 				mainMenu();
 			} else {
 				System.out.println("올바른 키를 입력해주세요 >> ");
 			}
-
 		}
-
-//		while (true) { // 스캐너 입력값 유효성 검증 로직
-//			String arr[] = { "1", "2", "3", "4" };
-//			String pick = scn.nextLine();
-//			boolean pickcheck = Arrays.asList(arr).contains(pick);
-//			if (pickcheck == false) {
-//				System.out.println("올바른 키를 입력해주세요 >> ");
-//				continue;
-//			} else {
-//				int intpick = Integer.parseInt(pick);
-//				switch (intpick) {
-//				case 1:
-//					s.sbmenuOrder1();
-//					break;
-//				case 2:
-//					cardMenu();
-//					break;
-//				case 3:
-//					m.memberView();
-//					break;
-//				case 4:
-//					m.signOut();
-//					mainMenu();
-//					break;
-//				}
-//			}
-//		}
-
 	}
 //	
 //	
@@ -259,7 +231,9 @@ public class MainMenu {
 		System.out.println("┌──────────────────────────────┐");
 		System.out.println("│                              │");
 		System.out.println("│        1. 카드 구매          │");
+		System.out.println("│                              │");
 		System.out.println("│        2. 카드 조회          │");
+		System.out.println("│                              │");
 		System.out.println("│        3. 메인 메뉴          │");
 		System.out.println("│                              │");
 		System.out.println("│      번호를 눌러주세요 >>    │");
@@ -280,38 +254,6 @@ public class MainMenu {
 
 		}
 
-//		while (true) {
-//			System.out.println();
-//			System.out.println();
-//			System.out.println("=======================");
-//			System.out.println("===== 1.카 드 구 매 =====");
-//			System.out.println("===== 2.카 드 조 회 =====");
-//			System.out.println("===== 3.메 인 메 뉴 =====");
-//			System.out.println("=======================");
-//			System.out.print("번호를 눌러주세요 >> ");
-//
-//			String arr[] = { "1", "2", "3" };
-//
-//			String pick = scn.nextLine();
-//			boolean pickcheck = Arrays.asList(arr).contains(pick);
-//			if (pickcheck == false) {
-//				System.out.println("올바른 키를 입력해주세요 >> ");
-//				continue;
-//			} else {
-//				int intpick = Integer.parseInt(pick);
-//				switch (intpick) {
-//				case 1:
-//					c.cardInsert();
-//					break;
-//				case 2:
-//					c.cardList();
-//					break;
-//				case 3:
-//					subMenu();
-//					break;
-//				}
-//			}
-//		}
 	}
 //	
 //	

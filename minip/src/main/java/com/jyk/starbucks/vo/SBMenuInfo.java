@@ -53,7 +53,7 @@ public class SBMenuInfo {
 
 		System.out.println("  " + mn_name);
 		System.out.println();
-		System.out.println(mn_spec);
+//		System.out.println(mn_spec); // 나중에 시간나면 노가다
 		System.out.println();
 		System.out.println("  " + mn_price + "원 (톨사이즈)");
 		System.out.println();

@@ -1,4 +1,4 @@
-package com.jyk.stack;
+package com.jyk.test;
 
 public class KoreanTest {
 	public static void main(String[] args) {

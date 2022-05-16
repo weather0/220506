@@ -11,6 +11,11 @@ public interface MembershipService {
 	MembershipInfo memberView(MembershipInfo vo);
 	int memberUpdate(MembershipInfo vo, String mod);
 	int memberDelete(MembershipInfo vo);
+	int coupons(String id);
+	int starin(String id);
+	int gold(String id);
+	int starout(String id);
+	int couponout(String id);
 	
 
 }

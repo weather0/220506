@@ -31,7 +31,7 @@ public class CardService {
 		}
 		String cn = Arrays.toString(arr).replaceAll("\\[|\\]|,|\\s", ""); // 배열→String형변환(Arrays.toString). 기본 양식에 쓰이는
 																			// 문자들을([],공백) 정규식으로 제거
-		return cn.substring(0, 4) + "-" + cn.substring(4, 8) + "-" + cn.substring(8, 12) + "-" + cn.substring(12, 16); 
+		return cn.substring(0, 4) + "-" + cn.substring(4, 8) + "-" + cn.substring(8, 12) + "-" + cn.substring(12, 16);
 		// 4자리씩 분할 및 하이픈 추가
 	}
 
@@ -142,5 +142,29 @@ public class CardService {
 			e.printStackTrace();
 		}
 		return cardList;
+	}
+
+//
+//
+//
+//
+//
+//
+//
+// 주문 직후 DB업데이트
+	public int afterOrder(int cardout, String id, String cardno) {
+		int n = 0;
+		String sql = "UPDATE CARDS SET CARD_OUT = ? WHERE ID = ? AND CARD_NO = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, cardout);
+			psmt.setString(2, id);
+			psmt.setString(3, cardno);
+			n = psmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return n;
+
 	}
 }

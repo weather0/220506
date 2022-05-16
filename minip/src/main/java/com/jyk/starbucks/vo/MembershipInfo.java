@@ -21,21 +21,24 @@ public class MembershipInfo {
 	Timestamp signinthis;
 	Timestamp signinlast;
 	String tier;
-	int star;
 	int coupon;
+	int star_in;
+	int star_out;
+	int star_bal;
+	Timestamp tierdate;
 
 	// 보안질문 리스트
 	public static String[] secqlist() {
 		String secqlist[] = new String[18]; // 항목 추가,삭제시 배열 크기도 수정(Out of Bound예외 주의!)
-		secqlist[0] = "1. 10대 시절에 가장 친하게 지냈던 친구의 이름은 무엇입니까?";
-		secqlist[1] = "2. 첫 애완동물의 이름은 무엇입니까?";
-		secqlist[2] = "3. 영화관에서 처음으로 관람한 영화는 무엇입니까?";
-		secqlist[3] = "4. 처음으로 비행기를 타고 방문한 곳은 어디입니까?";
-		secqlist[4] = "5. 초등학교 또는 중학교 시절 가장 좋아했던 선생님의 성함은 무엇입니까?";
-		secqlist[5] = "6. 꿈의 직업은 무엇입니까?";
-		secqlist[6] = "7. 가장 좋아했던 동화책의 제목은 무엇입니까?";
-		secqlist[7] = "8. 처음으로 소유했던 자동차의 모델명은 무엇입니까?";
-		secqlist[8] = "9. 어린 시절의 별명은 무엇입니까?";
+		secqlist[0] = " 1. 10대 시절에 가장 친하게 지냈던 친구의 이름은 무엇입니까?";
+		secqlist[1] = " 2. 첫 애완동물의 이름은 무엇입니까?";
+		secqlist[2] = " 3. 영화관에서 처음으로 관람한 영화는 무엇입니까?";
+		secqlist[3] = " 4. 처음으로 비행기를 타고 방문한 곳은 어디입니까?";
+		secqlist[4] = " 5. 초등학교 또는 중학교 시절 가장 좋아했던 선생님의 성함은 무엇입니까?";
+		secqlist[5] = " 6. 꿈의 직업은 무엇입니까?";
+		secqlist[6] = " 7. 가장 좋아했던 동화책의 제목은 무엇입니까?";
+		secqlist[7] = " 8. 처음으로 소유했던 자동차의 모델명은 무엇입니까?";
+		secqlist[8] = " 9. 어린 시절의 별명은 무엇입니까?";
 		secqlist[9] = "10. 학창 시절 가장 좋아했던 영화 배우 또는 영화 속 캐릭터는 누구입니까?";
 		secqlist[10] = "11. 학창 시절 가장 좋아했던 밴드 또는 가수는 누구입니까?";
 		secqlist[11] = "12. 부모님이 처음 만난 도시는 어디입니까?";
