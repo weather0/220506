@@ -313,7 +313,6 @@ public class MainMenu {
 //			}
 //		}
 	}
-
 //	
 //	
 //	
@@ -323,15 +322,20 @@ public class MainMenu {
 //	
 //	
 //	
-	// 한글 문자열 줄맞춤 프리셋 (구글링해도 드럽게 안 나옴. 함수로 쥐어짜다가 얻어걸림!)
+	// 한글 문자열 줄맞춤 프리셋 (구글링 드럽게 안 나옴. 함수로 쥐어짜다가 얻어걸림)
 	// length는 양식틀 고정사이즈, kor은 견적낼 한글포함 문자열
 	// 한글을 공백으로 치환하여 String.length메서드가 한글을 2글자로 인식하게 해서 길이를 뽑는다
 	// 양식 사이즈와 kor 문자열의 견적길이 차이만큼 공백으로 메운다. (여기까지가 korPrint메서드)
 	// 뒤에 "│" 칸막이는 메서드 호출하는 데서 알아서 적절히 (표처럼 칼럼은 가변적이므로)
 	public static void korPrint(int length, String kor) {
-		int k = length - kor.replaceAll("[ㄱ-ㅎㅏ-ㅣ가-힣]", "  ").length();
-		for (int i = 0; i < k; i++) {
-			System.out.print(" ");
+		try {
+			int k = length - kor.replaceAll("[ㄱ-ㅎㅏ-ㅣ가-힣]", "  ").length();
+			for (int i = 0; i < k; i++) {
+				System.out.print(" ");
+			}
+			
+		} catch (Exception e) {
+			System.out.println("");
 		}
 
 	}
