@@ -1,5 +1,6 @@
 package com.jyk.starbucks.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -191,22 +192,22 @@ public class SBMenuManager {
 	// 상품 선택(목록)
 	public void sbmenuOrder3() {
 		System.out.println();
-		System.out.println("┌────────────────────────────────────────────────┐");
-		System.out.println("│                                                │");
-		System.out.println("│                     O r d e r                  │");
-		System.out.println("│ ────────────────────────────────────────────── │");
+		System.out.println("┌─────────────────────────────────────────────────┐");
+		System.out.println("│                                                 │");
+		System.out.println("│                     O r d e r                   │");
+		System.out.println("│ ─────────────────────────────────────────────── │");
 		String type = types[intpick2 - 1];
 		System.out.print("│  " + type);
 		MainMenu.korPrint(35, type);
-		System.out.println("           │");
-		System.out.println("│  ---------------                               │");
-		System.out.println("│                                                │");
+		System.out.println("            │");
+		System.out.println("│  ---------------                                │");
+		System.out.println("│                                                 │");
 		menuDisplay = dao.menuDisplay(type);
 		menuDisplay.toString();
-		System.out.println("│                                                │");
-		System.out.println("│                                                │");
-		System.out.println("│                                 z.뒤로  m.메인 │");
-		System.out.println("└────────────────────────────────────────────────┘");
+		System.out.println("│                                                 │");
+		System.out.println("│                                                 │");
+		System.out.println("│                                  z.뒤로  m.메인 │");
+		System.out.println("└─────────────────────────────────────────────────┘");
 
 		// 스캐너 입력값 유효성 검증 로직
 		String arr[] = new String[menuDisplay.size() + 2]; // 선택지배열 생성(z,m자리 추가)
@@ -872,6 +873,7 @@ public class SBMenuManager {
 //	
 //	//스타벅스리워드
 	public void rewards() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		myid.setId(loginInfo);
 		myid = daoM.memberView(myid);
 		System.out.println();
@@ -883,7 +885,13 @@ public class SBMenuManager {
 		System.out.println("                                            ");
 		System.out.println("  현재 고객님의 등급은 " + myid.getTier() + "입니다");
 		System.out.println("                                           ");
-		System.out.println("  현재 별 개수는 " + myid.getStar_bal() + "입니다");
+		System.out.println("  등급유효기간은 " + sdf.format(myid.getTierdate()) + "까지 입니다");
+		System.out.println("                                            ");
+		System.out.println("  현재 별★ 개수는 " + myid.getStar_bal() + "입니다");
+		System.out.println("                                            ");
+		System.out.println("  스타벅스 별★을 12개 모으시면");
+		System.out.println("                                            ");
+		System.out.println("  자동으로 무료쿠폰이 적용됩니다");
 		System.out.println("                                            ");
 		System.out.println("                             z.뒤로  m.메인 ");
 		System.out.println("└───────────────────────────────────────────┘");

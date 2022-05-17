@@ -36,14 +36,22 @@ public class SBMenuInfo {
 //	
 //	
 //	
-	public String toString() {
 
-		System.out.print("│  " + mnorder + ". " + mn_name);
-		MainMenu.korPrint(35, mn_name);
-		System.out.printf("%6d", mn_price);
-		System.out.println("  │");
+	public String toString() {
+		if (mnorder < 10) {
+			System.out.print("│   " + mnorder + ". " + mn_name);
+			MainMenu.korPrint(35, mn_name);
+			System.out.printf("%6d", mn_price);
+			System.out.println("  │");
+		} else {
+			System.out.print("│  " + mnorder + ". " + mn_name);
+			MainMenu.korPrint(35, mn_name);
+			System.out.printf("%6d", mn_price);
+			System.out.println("  │");
+		}
 		return null;
 	}
+
 //
 //
 //	
@@ -55,7 +63,7 @@ public class SBMenuInfo {
 		System.out.println();
 //		System.out.println(mn_spec); // 나중에 시간나면 노가다
 		System.out.println();
-		System.out.println("  " + mn_price + "원 (톨사이즈)");
+		System.out.println("  " + mn_price + "원");
 		System.out.println();
 		System.out.println("  ---------------------------------");
 		System.out.println("  0.숏   1.톨   2.그란데   3.벤티");

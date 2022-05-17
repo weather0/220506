@@ -340,7 +340,7 @@ public class MembershipServiceImple implements MembershipService {
 	@Override
 	public int gold(String id) {
 		int n = 0;
-		String sql = "UPDATE MEMBERS SET TIER = 'GOLD', COUPON = 1, TIERDATE = SYSDATE WHERE ID = ?";
+		String sql = "UPDATE MEMBERS SET TIER = 'GOLD', COUPON = 1, STAR_OUT =30, TIERDATE = ADD_MONTHS(SYSDATE, 12) WHERE ID = ?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
